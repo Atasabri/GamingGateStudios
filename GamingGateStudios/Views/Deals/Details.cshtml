@@ -1,0 +1,109 @@
+﻿@model GamingGateStudios.Models.Deal
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name Details</h2>
+
+<div>
+    <h4>Deal</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name_AR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name_AR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game.Name)
+        </dd>
+        <dt>
+            Number Of Buying
+        </dt>
+
+        <dd>
+            @Model.Deal_Gamers.Count()
+        </dd>
+        <dt>
+           Photo
+        </dt>
+
+        <dd>
+            <img src="~/Uploads/Deals/@(Model.ID).jpg" alt="" width="500" height="300" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<br />
+<h2>Member GGB Count</h2>
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                GGB Count
+            </th>
+        </tr>
+        @foreach (var item in Model.Deal_Member)
+        {
+            <tr>
+                <td>
+                    @item.MemberShip.Name
+                </td>
+                <td>
+                    @item.GGB
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<br />
+<h2>Gamers</h2>
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Phone
+            </th>
+        </tr>
+        @foreach (var item in Model.Deal_Gamers)
+        {
+            <tr>
+                <td>
+                    @item.Gamer.UserName
+                </td>
+                <td>
+                    @item.Gamer.Phone
+                </td>
+                <td>
+                    @Html.ActionLink("Go To Gamer", "Details", "Gamers", new { @id = item.Gamer_ID },null)
+                </td>
+            </tr>
+        }
+    </table>
+</div>

@@ -1,0 +1,40 @@
+﻿@model IQueryable<IGrouping<int?,GamingGateStudios.Models.User>>
+
+@{
+    ViewBag.Title = "Gender";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Users Gender</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Gender
+        </th>
+        <th>
+            Num Of Users
+        </th>
+    </tr>
+
+@foreach (var item in Model.OrderByDescending(x=>x.Count())) {
+    <tr>
+        <td>
+            @if(item.Key==1)
+            {
+               <span>Male</span>
+            }
+            else
+            {
+                <span>Female</span>
+            }
+        </td>
+        <td>
+            @item.Count()
+        </td>
+    </tr>
+}
+
+</table>
+<br />
+@Html.ActionLink("Back To List", "Index", "Users")

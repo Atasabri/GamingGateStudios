@@ -1,0 +1,57 @@
+﻿@model GamingGateStudios.Models.Admin
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details Admin</h2>
+
+<div>
+    <h4>@Model.Username</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Type)
+        </dt>
+
+        <dd>
+            @if(Model.Admin_Type==1)
+            {
+                <span>Manager</span>
+            }
+            else
+            {
+                <span>Normal</span>
+            }
+        </dd>
+        <dt>
+           Photo
+        </dt>
+
+        <dd>
+            <img src="~/Uploads/Admins/@(Model.ID).jpg" alt="" width="500" height="300" />    
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

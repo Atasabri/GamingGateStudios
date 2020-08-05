@@ -1,0 +1,232 @@
+﻿@model GamingGateStudios.Models.Game
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Operators/Views/Shared/_Layout.cshtml";
+}
+
+<div style="width:800px; margin:0 auto;">
+    <h2>Details</h2>
+
+    <div>
+        <h4>Game</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+              @Html.DisplayNameFor(model => model.Android_URL)
+            </dt>
+
+            <dd>
+                <a href="@Html.DisplayFor(model => model.Android_URL)" target="_blank">@Html.DisplayFor(model => model.Android_URL)</a> 
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Ituens_URL)
+            </dt>
+
+            <dd>
+                <a href="@Html.DisplayFor(model => model.Ituens_URL)" target="_blank">@Html.DisplayFor(model => model.Ituens_URL)</a> 
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Windows_URL)
+            </dt>
+
+            <dd>
+                <a href="@Html.DisplayFor(model => model.Windows_URL)" target="_blank">@Html.DisplayFor(model => model.Windows_URL)</a> 
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Facebook_URL)
+            </dt>
+
+            <dd>
+                <a href="@Html.DisplayFor(model => model.Facebook_URL)" target="_blank">@Html.DisplayFor(model => model.Facebook_URL)</a> 
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.KindleFire_URL)
+            </dt>
+
+            <dd>
+                <a href="@Html.DisplayFor(model => model.KindleFire_URL)" target="_blank">@Html.DisplayFor(model => model.KindleFire_URL)</a> 
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EB_URL)
+            </dt>
+
+            <dd>
+                <a href="@Html.DisplayFor(model => model.EB_URL)" target="_blank">@Html.DisplayFor(model => model.EB_URL)</a> 
+            </dd>
+            <dt>
+                Visit Game
+            </dt>
+            <dd>
+                <a href="@Model.Game_Link" target="_blank">Visit Game</a>
+            </dd>
+            <dt>
+                Number Of Gamers
+            </dt>
+            <dd>
+                @Model.Gamers.Count
+            </dd>
+            <dt>
+                Number Of Watch
+            </dt>
+            <dd>
+                @Model.Watch
+            </dd>
+            <dt>
+                Photo
+            </dt>
+            <dd>
+                <img src="~/Uploads/Games/@(Model.ID).jpg" alt="" width="500" height="300" />
+            </dd>
+
+        </dl>
+        <p>
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+    </div>
+@if (Model.Trailer != null)
+{
+    <div style="width:80%;height:600px;margin-left:10%;margin-right:10%">
+        <iframe src="@Model.Trailer" frameborder="0" style="width:80%;height:80%;margin-left:10%;margin-right:10%" gesture="media" allowfullscreen></iframe>
+    </div>
+}
+
+<div style="width:90%; margin:0 auto;">
+    <h2>Countries In This Game</h2>
+    <div class="graph">
+        <div class="tables" style="align-items:center">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr style="align-items:center">
+                        <th>#</th>
+                        <th>Country</th>
+                        <th>
+                            Number Of Gamers
+                        </th>
+                    </tr>
+                </thead>
+                <tbody style="align-items:center">
+                    @{
+                        int counter = 0;
+                    }
+                    @foreach (var item in Model.Gamers.GroupBy(x => x.Country.ToLower()).Select(x => new { country = x.Key, num = x.Count() }).OrderByDescending(x => x.num))
+                    {
+                        counter++;
+                        <tr>
+                            <th scope="row">@counter</th>
+                            <td>@item.country</td>
+                            <td>
+                                @item.num
+                            </td>
+                    </tr>
+                                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div style="width:90%; margin:0 auto;">
+    <h2>Age In This Game</h2>
+    <div class="graph">
+        <div class="tables" style="align-items:center">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr style="align-items:center">
+                        <th>#</th>
+                        <th>Age</th>
+                        <th>
+                            Number Of Gamers
+                        </th>
+                    </tr>
+                </thead>
+                <tbody style="align-items:center">
+                    @{
+                        int counter1 = 0;
+                    }
+                    @foreach (var item in Model.Gamers.GroupBy(x => DateTime.Now.Year - x.DateOfBirth.Year).Select(x => new { age = x.Key, num = x.Count() }).OrderByDescending(x => x.num))
+                    {
+                        counter1++;
+                        <tr>
+                            <th scope="row">@counter1</th>
+                            <td>@item.age</td>
+                            <td>
+                                @item.num
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div style="width:90%; margin:0 auto;">
+    <h2>Gender In This Game</h2>
+    <div class="graph">
+        <div class="tables" style="align-items:center">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr style="align-items:center">
+                        <th>#</th>
+                        <th>Age</th>
+                        <th>
+                            Number Of Gamers
+                        </th>
+                    </tr>
+                </thead>
+                <tbody style="align-items:center">
+                    @{
+                        int counter2 = 0;
+                    }
+                    @foreach (var item in Model.Gamers.GroupBy(x => x.Gender).Select(x => new { gender = x.Key, num = x.Count() }).OrderByDescending(x => x.num))
+                    {
+                        counter2++;
+                        <tr>
+                            <th scope="row">@counter2</th>
+                            <td>@if(item.gender==1)
+                            {
+                                <span>Male</span>
+                            }else
+                            {
+                                <span>Female</span>
+                            }
+
+                            </td>
+                            <td>
+                                @item.num
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+

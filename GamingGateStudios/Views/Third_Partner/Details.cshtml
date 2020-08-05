@@ -1,0 +1,76 @@
+﻿@model GamingGateStudios.Models.Third_Partner
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name Details</h2>
+
+<div>
+    <h4>Third Partner Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt>
+           Photo
+        </dt>
+        <dd>
+            <img src="~/Uploads/ThirdPartner/@(Model.ID).jpg" alt="" width="500" height="300" />
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<br />
+<h2>Prizes</h2>
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+               Number Of Winners
+            </th>
+        </tr>
+        @foreach (var item in Model.Prizes)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Winners.Count()
+                </td>
+                <td>
+                    @Html.ActionLink("Prize Details", "Details", "Prizes", new { @id = item.ID }, null)
+                </td>
+            </tr>
+        }
+    </table>
+</div>

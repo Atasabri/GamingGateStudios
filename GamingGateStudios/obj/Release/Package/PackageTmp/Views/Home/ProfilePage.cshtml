@@ -1,0 +1,216 @@
+﻿@model GamingGateStudios.Models.User
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link href="~/Content/Profile/popuo-box.css" rel="stylesheet" />
+<script src="~/Scripts/Profile/jquery.magnific-popup.js"></script>
+<script src="~/Scripts/Profile/jquery.min.js"></script>
+<style>
+        #messages {
+    padding: 15px 10px;
+    margin: 15px 0;
+    border: 1px solid #ff9900;
+	color:#ff9900;
+    text-align:center;
+}
+#messages p {
+    color: #555;
+    font-size: 14px;
+	font-weight:700;
+    text-align:center;
+}
+</style>
+<br/>
+<h3 class="tittle_agile_w3">@SiteResource.YourProfile</h3>
+<div class="heading-underline">
+    <div class="h-u1"></div><div class="h-u2"></div><div class="h-u3"></div><div class="clearfix"></div>
+</div>
+<div class="main-agileits">
+        @if (TempData["Save"] != null)
+        {
+            if (TempData["Save"].ToString() == SiteResource.Saved)
+            {
+                <div id="messages" style="color:black">
+                    <h4>@TempData["Save"]</h4>
+                </div>
+            }
+            else
+            {
+                <div id="messages">
+                    <h4>@TempData["Save"]</h4>
+                </div>
+            }
+        }
+    <div class="right-wthree">
+        @if (Model.Face_ID != null)
+        {
+            <img src="https://graph.facebook.com/@Model.Face_ID/picture" alt="image" width="250" height="200" />
+        }
+        else
+        {
+            <img src="~/Uploads/Users/@(Model.ID).jpg" alt="image" width="250" height="200" />
+        }
+
+        <h2>@Model.Name</h2>
+        <p>@Model.DateOfBirth.Month - @Model.DateOfBirth.Day - @Model.DateOfBirth.Year</p>
+    </div>
+    <div class="left-w3ls">
+        <ul class="address">
+            <li>
+                <ul class="address-text">
+                    <li><b>@SiteResource.Balance </b></li>
+                    @if (Model.GGB.HasValue)
+                    {
+                        <li>: @Model.GGB GGP</li>
+                    }
+                    else if(!Model.GGB.HasValue||Model.GGB.Value==0)
+                    {
+                        <li>: No GGP <a href="~/Home/Pricing" style="color:red">@SiteResource.Charge</a></li>
+                    }
+                </ul>
+            </li>
+            <li>
+                <ul class="address-text">
+                    <li><b>@SiteResource.Phone </b></li>
+                    <li>:@Model.Phone</li>
+                </ul>
+            </li>
+            <li>
+                <ul class="address-text">
+                    <li><b>@SiteResource.Country </b></li>
+                    <li>:@Model.Country</li>
+                </ul>
+            </li>
+            <li>
+                <ul class="address-text">
+                    <li><b>@SiteResource.Email </b></li>
+                    <li>:@Model.Email</li>
+                </ul>
+            </li>
+            <li>
+                <ul class="address-text">
+                    <li><b>@SiteResource.Gender </b></li>
+                   @if (Model.Gender == 1)
+                   {
+                    <li>: Male</li>
+                   }
+                   else
+                   {
+                    <li>: Female</li>
+                   }
+
+                </ul>
+            </li>
+        </ul>
+
+        <div class="button">
+            <a href="#small-dialog" class="play-icon popup-with-zoom-anim">@SiteResource.EditYourProfile</a>
+        </div>
+        <div id="small-dialog" class="mfp-hide w3ls_small_dialog wthree_pop">
+            <div class="agileits_modal_body">
+
+                @using (Html.BeginForm("ProfilePage", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            @Html.Label(SiteResource.Name,new {@class= "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label(SiteResource.Email, new { @class = "control-label col-md-2" })                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control",@type="email" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.Label(SiteResource.Password, new { @class = "control-label col-md-2",id="con" })                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.Label(SiteResource.Phone, new { @class = "control-label col-md-2" })                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.Label(SiteResource.Country, new { @class = "control-label col-md-2" })                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.Label(SiteResource.DateOfBirth, new { @class = "control-label col-md-2" })                            <div class="col-md-10">
+                            <input id="Text1" type="date" value="@Model.DateOfBirth.ToString("yyy-MM-dd")" name="DateOfBirth"  class="form-control" />        
+                                @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.Label(SiteResource.Gender, new { @class = "control-label col-md-2" })                            <div class="col-md-10">
+                                <select id="Select1" name="Gender" class="form-control">
+                                    @if (Model.Gender == 1)
+                                    {
+                                        <option value="1">Male</option>
+                                        <option value="0">Female</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="0">Female</option>
+                                        <option value="1">Male</option>
+                                    }
+
+                                </select>
+                                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        @if (Model.Face_ID == null)
+                        {
+                            <div class="form-group">
+                                @Html.Label(SiteResource.Photo, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <input id="File1" type="file" name="photo" />
+                                </div>
+                            </div>
+                        }
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="@SiteResource.Save" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <!-- //pop-up-box -->
+        <script src="~/Scripts/Profile/jquery.magnific-popup.js" type="text/javascript"></script>
+        <script>
+					$(document).ready(function() {
+					$('.popup-with-zoom-anim').magnificPopup({
+					type: 'inline',
+					fixedContentPos: false,
+					fixedBgPos: true,
+					overflowY: 'auto',
+					closeBtnInside: true,
+					preloader: false,
+					midClick: true,
+					removalDelay: 300,
+					mainClass: 'my-mfp-zoom-in'
+					});
+
+					});
+        </script>
+    </div>
+
+    <div class="clear"></div>
+</div>

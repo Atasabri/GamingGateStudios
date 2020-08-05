@@ -1,0 +1,46 @@
+﻿@model IQueryable<IGrouping<int?,GamingGateStudios.Models.User>>
+@{
+    ViewBag.Title = "PaymentMethod";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>PaymentMethod</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Payment
+        </th>
+        <th>
+            Num Of Pay
+        </th>
+        <th>
+            All Total Money $
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Where(x=>x.Key.HasValue))
+    {
+        <tr>
+            <td>
+                @if (item.Key == 1)
+                {
+                    <span>PayZa</span>
+                }
+                else if (item.Key == 2)
+                {
+                    <span>PayTab</span>
+                }
+            </td>
+            <td>
+                @item.Count()
+            </td>
+            <td>
+                @item.Select(x=>x.MemberShip.Price).Aggregate((a,b)=>a+b)
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+@Html.ActionLink("Back To List", "Index", "Users")

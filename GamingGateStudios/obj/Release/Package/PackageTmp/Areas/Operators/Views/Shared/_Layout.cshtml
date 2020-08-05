@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    @using GamingGateStudios.Models
+
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - Operators</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Areas/Operators/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <!-- Custom CSS -->
+    <link href="~/Areas/Operators/css/style.css" rel='stylesheet' type='text/css' />
+    <!-- Graph CSS -->
+    <link href="~/Areas/Operators/css/font-awesome.css" rel="stylesheet">
+    <!-- jQuery -->
+    <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'>
+    <!-- lined-icons -->
+    <link rel="stylesheet" href="~/Areas/Operators/css/icon-font.min.css" type='text/css' />
+    <!-- /js -->
+    <script src="~/Areas/Operators/js/jquery-1.10.2.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+          rel="stylesheet" type='text/css'>
+    <link href="https://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <!-- //js-->
+</head>
+<body>
+    @using GamingGateStudios.Areas.Operators.Models
+    <div class="page-container">
+        <!--/content-inner-->
+        <div class="left-content">
+            <div class="inner-content">
+                <!-- header-starts -->
+                <div class="header-section">
+                    <!--menu-right-->
+                    <div class="top_menu">
+                        <!--/profile_details-->
+                        <div class="profile_details_left">
+
+                        </div>
+                        <div class="clearfix"></div>
+                        <!--//profile_details-->
+                    </div>
+                    <!--//menu-right-->
+                    <div class="clearfix"></div>
+                </div>
+                <!-- //header-ends -->
+                <!--outter-wp-->
+                @RenderBody()
+                <!--//outer-wp-->
+                <!--footer section start-->
+                <br/><br/>
+                <footer style="background-color:black">
+                    <p>&copy @DateTime.Now.Year Gaming Gate Studios . All Rights Reserved |  <a href="https://www.mediagatestudios.com/" target="_blank">Media Gate Studios</a></p>
+                </footer>
+                <!--footer section end-->
+            </div>
+        </div>
+        <!--//content-inner-->
+        <!--/sidebar-menu-->
+        <div class="sidebar-menu">
+               <header class="logo">
+                <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="https://www.gaminggatestudios.com/">
+                    <span id="logo"> <h1><img src="http://www.mediagatestudios.com/images/n1.jpg" alt="" style="width:40px;height:40px;border-radius:50%" /> M-G-S</h1></span>
+                    <!--<img id="logo" src="" alt="Logo"/>-->
+                </a>
+            </header>
+            <div style="border-top:1px solid rgba(69, 74, 84, 0.7)"></div>
+            <!--/down-->
+            <div class="down">
+                @if (Session["Data"] != null)
+                {
+                    int ID = (Session["Data"] as SIGNINDATA).ID;
+                    string Name = (Session["Data"] as SIGNINDATA).UserName;
+                    string Type = (Session["Data"] as SIGNINDATA).Type;
+                    string Folder = "";
+                    if (Type == "ADS")
+                    {
+                        Folder = "AdsClients";
+                    } else if (Type == "SPLASH") { Folder = "Channels"; } else if (Type == "OPERATOR") { Folder = "Operator"; } else if (Type == "THIRD") { Folder = "ThirdPartner"; }else if (Type == "AGENCY"){ Folder = "Agency"; }
+                    <img src="~/Uploads/@Folder/@(ID).jpg" width="60" height="60" style="border-radius: 50%;" />
+                    <span class="name-caret">@Name </span>
+                    <ul>
+                        <li><a class="tooltips" href="~/Operators/OGames/SignOut"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
+                    </ul>
+                }
+            </div>
+            <br/>
+            <!--//down-->@{
+                    string _Type = (Session["Data"] as SIGNINDATA).Type;
+                 }
+            <div class="menu">
+                <ul id="menu">
+                    @*<li><a href="index.html"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>*@
+                    <li id="menu-academico">
+                        <a href="~/Operators/OGames/Index"><i class="fa fa-table"></i> <span> Games</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                        <ul id="menu-academico-sub">
+                            @foreach (var item in new DB().Games)
+                            {
+                                <li>@Html.ActionLink(item.Name,"Details","OGames",new {area="Operators",id=item.ID },new {@id= "menu-academico-avaliacoes" })</li>
+                            }
+                        </ul>
+                    </li>
+                    <li id="menu-academico">
+                        <a href="~/Operators/OGamers/Index"><i class="fa fa-file-text-o"></i> <span>Gamers</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                        <ul id="menu-academico-sub">
+                            <li id="~/Operators/OGamers/Age"><a href="~/Operators/OGamers/Age">Age</a></li>
+                            <li id="~/Operators/OGamers/Country"><a href="~/Operators/OGamers/Country">Country</a></li>
+                            <li id="~/Operators/OGamers/Gender"><a href="~/Operators/OGamers/Gender">Gender</a></li>
+                            <li id="~/Operators/OGamers/Active"><a href="~/Operators/OGamers/Active">Play Now</a></li>
+                        </ul>
+                    </li>
+                    @if (_Type == "THIRD")
+                    {
+                        <li><a href="~/Operators/OPrizes/Index"><i class="fa fa-smile-o"></i> <span>Prizes</span></a></li>
+                        <li id="menu-academico">
+                            <a href="~/Operators/OPrizes/Winners"><i class="lnr lnr-envelope"></i> <span>Winners</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                            <ul id="menu-academico-sub">
+                                <li id="~/Operators/OPrizes/Unreceived"><a href="~/Operators/OPrizes/Unreceived">Un Received</a></li>
+                            </ul>
+                        </li>
+                    }
+                    else if (_Type == "ADS")
+                    {
+                        <li><a href="~/Operators/OADS/index"><i class="fa fa-smile-o"></i> <span>ADS</span></a></li>
+                        <li><a href="~/Operators/OADS/Data"><i class="lnr lnr-chart-bars"></i> <span>Your Data</span></a></li>
+                    }
+                    else if (_Type == "SPLASH")
+                    {
+                        <li><a href="~/Operators/OSplashes/Index"><i class="fa fa-smile-o"></i> <span>Splashes</span></a></li>
+                        <li><a href="~/Operators/OSplashes/Data"><i class="lnr lnr-chart-bars"></i> <span>Your Data</span></a></li>
+                    }
+                    else if (_Type == "AGENCY")
+                    {
+                                                <li id="menu-academico">
+                                                    <a href="~/Operators/OAgencies/Index"><i class="lnr lnr-envelope"></i> <span>Your Clients</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                                                    <ul id="menu-academico-sub">
+                                                        <li id="~/Operators/OPrizes/Unreceived"><a href="~/Operators/OAgencies/CreateClient">Create New Client</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="~/Operators/OAgencies/Compagin"><i class="lnr lnr-chart-bars"></i> <span>Create Compagin</span></a></li>
+
+                                                <li id="menu-academico">
+                                                    <a href="~/Operators/OAgencies/ADS"><i class="fa fa-smile-o"></i> <span>Your ADS</span> <span class="fa fa-angle-right" style="float: right"></span></a>
+                                                    <ul id="menu-academico-sub">
+                                                        <li id="~/Operators/OPrizes/Unreceived"><a href="~/Operators/OAgencies/CreateAD">Create New AD</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="~/Operators/OAgencies/Data"><i class="lnr lnr-chart-bars"></i> <span>Your Data</span></a></li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <script>
+							var toggle = true;
+
+							$(".sidebar-icon").click(function() {
+							  if (toggle)
+							  {
+								$(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
+								$("#menu span").css({"position":"absolute"});
+							  }
+							  else
+							  {
+								$(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
+								setTimeout(function() {
+								  $("#menu span").css({"position":"relative"});
+								}, 400);
+							  }
+
+											toggle = !toggle;
+										});
+    </script>
+    <!--js -->
+    <script src="~/Areas/Operators/js/jquery.nicescroll.js"></script>
+    <script src="~/Areas/Operators/js/scripts.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Areas/Operators/js/bootstrap.min.js"></script>
+    <link src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+</body>
+</html>

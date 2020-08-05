@@ -1,0 +1,69 @@
+﻿@model IEnumerable<GamingGateStudios.Models.Ads_Clients>
+
+@{
+    ViewBag.Title = "ADS Clients";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ADS Clients</h2>
+@{ 
+    double Total_Money = 0;
+    if(Model.Count()>0)
+    {
+        Total_Money = Model.Select(x => x.Price.HasValue ? x.Price.Value : 0).Aggregate((a, b) => a + b);
+    }
+}
+<h4>Total Money From Ads Clients : @Total_Money</h4>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Target_CPM)
+        </th>
+        <th>
+            Num Of ADS
+        </th>
+        <th>
+            Actual CPM
+        </th>
+        <th>
+            Photo
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Target_CPM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADS.Count)
+        </td>
+        <td>
+            @{
+                int Actual_CPM = item.ADS.Select(x => x.CPM).Aggregate((a,b)=>a+b);
+            }
+            @Actual_CPM
+        </td>
+        <td>
+            <img src="~/Uploads/AdsClients/@(item.ID).jpg" alt="" width="50" height="50" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

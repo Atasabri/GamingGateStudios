@@ -1,0 +1,129 @@
+﻿@using GamingGateStudios.Models
+@model GamingGateStudios.Models.Agency
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name Details</h2>
+
+<div>
+    <h4>Agency</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Target_CPM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Target_CPM)
+        </dd>
+        <dt>
+            Actual CPM
+        </dt>
+        <dd>
+            @{ 
+                int Actual_CPM = 0;
+                foreach (var item in Model.Ads_Clients)
+                {
+                    Actual_CPM += item.ADS.Select(x => x.CPM).Aggregate((a, b) => a + b);
+                }
+            }
+            @Actual_CPM
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt>
+            Photo
+        </dt>
+        <dd>
+            <img src="~/Uploads/Agency/@(Model.ID).jpg" alt="" width="500" height="300" />
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<br />
+<h2>Clients</h2>
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Client Name
+            </th>
+            <th>
+               Num Of ADS
+            </th>
+        </tr>
+        @foreach (var item in Model.Ads_Clients)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.ADS.Count
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<br />
+<h2>ADS</h2>
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                AD Name
+            </th>
+            <th>
+                CPM
+            </th>
+        </tr>
+        @foreach (var item in Model.Ads_Clients)
+        {
+            foreach (var i in item.ADS)
+            {
+                <tr>
+                    <td>
+                        @i.Name
+                    </td>
+                    <td>
+                        @i.CPM
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+</div>

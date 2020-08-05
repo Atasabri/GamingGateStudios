@@ -1,0 +1,44 @@
+﻿@model IEnumerable<GamingGateStudios.Models.Gamer>
+
+@{
+    ViewBag.Title = "Gamers";
+    Layout = "~/Areas/Operators/Views/Shared/_Layout.cshtml";
+}
+<div style="width:90%; margin:0 auto;">
+    <h2>Gamers</h2>
+    <div class="graph">
+        <div class="tables" style="align-items:center">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr style="align-items:center">
+                        <th>#</th>
+                        <th>@Html.DisplayNameFor(model => model.UserName)</th>
+                        <th>@Html.DisplayNameFor(model => model.Country)</th>
+                        <th>Age</th>
+                        <th>@Html.DisplayNameFor(model => model.Active)</th>
+                        <th>@Html.DisplayNameFor(model => model.Game.Name)</th>
+                    </tr>
+                </thead>
+                <tbody style="align-items:center">
+                    @{
+                        int counter = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        counter++;
+                        <tr>
+                            <th scope="row">@counter</th>
+                            <td>@Html.ActionLink(item.UserName, "Details", "OGamers",new {area="Operators", id = item.ID },null)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Country)</td>
+                            <td>@{int age = DateTime.Now.Year - item.DateOfBirth.Year;}
+                            @age</td>
+                            <td>@Html.DisplayFor(modelItem => item.Active)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Game.Name)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

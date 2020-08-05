@@ -1,0 +1,99 @@
+﻿@model GamingGateStudios.Models.Prize
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name Details</h2>
+
+<div>
+    <h4>Prize</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name_AR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name_AR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Points)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Points)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Third_Partner1.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Third_Partner1.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            Photo
+        </dt>
+        <dd>
+            <img src="~/Uploads/Prizes/@(Model.ID).jpg" alt="" width="500" height="300" />
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<br />
+<h2>Winners</h2>
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Gamer Phone
+            </th>
+            <th>
+                User Name
+            </th>
+        </tr>
+        @foreach (var item in Model.Winners)
+        {
+            <tr>
+                <td>
+                    @item.Gamer.Phone
+                </td>
+                <td>
+                    @item.User.Name
+                </td>
+                <td>
+                    @Html.ActionLink("Gamer Details", "Details", "Gamers", new { @id = item.Gamer_ID }, null) | 
+                    @Html.ActionLink("User Details", "Details", "Users", new { @id = item.User_ID }, null)
+                </td>
+            </tr>
+        }
+    </table>
+</div>

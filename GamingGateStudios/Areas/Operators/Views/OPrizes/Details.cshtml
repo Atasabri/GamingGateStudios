@@ -1,0 +1,79 @@
+﻿@model GamingGateStudios.Models.Prize
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Operators/Views/Shared/_Layout.cshtml";
+}
+<div style="width:800px; margin:0 auto;">
+
+    <h2>Details</h2>
+
+    <div>
+        <h4>Prize</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Points)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Points)
+            </dd>
+            <dt>
+                Number Of Winners
+            </dt>
+            <dd>
+                @Model.Winners.Count
+            </dd>
+            <dt>
+                Photo
+            </dt>
+            <dd>
+                <img src="~/Uploads/Prizes/@(Model.ID).jpg" alt="" width="500" height="300" />
+            </dd>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    </div>
+<div style="width:90%; margin:0 auto;">
+    <h2>Winners</h2>
+    <div class="graph">
+        <div class="tables" style="align-items:center">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr style="align-items:center">
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Photo</th>
+                    </tr>
+                </thead>
+                <tbody style="align-items:center">
+                    @{
+                        int counter = 0;
+                    }
+                    @foreach (var item in Model.Winners)
+                    {
+                        counter++;
+                        <tr>
+                            <th scope="row">@counter</th>
+                            <td>@Html.ActionLink(item.Gamer.UserName, "Details","OGamers", new { id = item.Gamer_ID },null)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Gamer.Phone)</td>
+                            <td><img src="~/Uploads/Users/@(item.User_ID).jpg" alt="" width="60" height="60" /></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

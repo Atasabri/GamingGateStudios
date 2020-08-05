@@ -1,0 +1,63 @@
+﻿@model IEnumerable<GamingGateStudios.Models.Subscriber>
+
+@{
+    ViewBag.Title = "Subscribers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Subscribers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<form action="~/Subscribers/SendMail" method="post" enctype="multipart/form-data">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                <input id="checkall" type="checkbox" />
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <input id="Checkbox1" type="checkbox" value="@item.Email" name="c" />
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <h3>The Mail Subject  : </h3> <input id="Text1" type="text" name="Subject" class="form-control" /><br />
+    <h3>The Mail Html File  : </h3> <input id="File1" type="file" name="file" /><br />
+    <br />
+    <input id="Submit1" type="submit" value="Send Mail To Selected Subscribers" class="btn btn-default" />
+</form>
+
+<script>
+    var checkall = document.getElementById("checkall");
+    var myform = document.getElementsByName("c");
+    checkall.onclick = function () {
+        if (checkall.checked == true) {
+            for (var i = 0; i < document.getElementsByName("c").length; i++) {
+                myform[i].checked = true;
+            }
+        } else {
+            for (var i = 0; i < document.getElementsByName("c").length; i++) {
+                myform[i].checked = false;
+            }
+        }
+    }
+</script>

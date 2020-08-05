@@ -1,0 +1,31 @@
+﻿@using GamingGateStudios.Models
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Member Name
+            </th>
+            <th>
+                GGB Count
+            </th>
+        </tr>
+        @if (Session["Data"] != null)
+        {
+            foreach (var item in Session["Data"] as List<Deal_Member>)
+            {
+               string MemberName= new DB().MemberShips.Find(item.Member_ID).Name;
+                <tr>
+                    <td>
+                        @MemberName
+                    </td>
+                    <td>
+                        @item.GGB
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+</div>
+
+
+

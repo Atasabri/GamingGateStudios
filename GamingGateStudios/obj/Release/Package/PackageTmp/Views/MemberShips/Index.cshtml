@@ -1,0 +1,92 @@
+﻿@model IEnumerable<GamingGateStudios.Models.MemberShip>
+
+@{
+    ViewBag.Title = "MemberShip";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>MemberShip</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<form action="~/MemberShips/SendMail" method="post" enctype="multipart/form-data">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Limit_Token_Money)
+            </th>
+            <th>
+                Color
+            </th>
+            <th>
+                Num Of Users
+            </th>
+            <th>
+                Photo
+            </th>
+            <th>
+                <input id="checkall" type="checkbox" />
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Limit_Token_Money)
+                </td>
+                <td>
+                    <div style="width:40px;height:40px;background-color:@item.color"></div>
+                </td>
+                <td>
+                    @item.Users.Count()
+                </td>
+                <td>
+                    <img src="~/Uploads/Member/@(item.ID).jpg" alt="" width="50" height="50" />
+                </td>
+                <td>
+                    <input id="Checkbox1" type="checkbox" value="@item.ID" name="c" />
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <h3>The Mail Subject  : </h3> <input id="Text1" type="text" name="Subject" class="form-control" /><br />
+    <h3>The Mail Html File  : </h3> <input id="File1" type="file" name="file" /><br />
+    <br />
+    <input id="Submit1" type="submit" value="Send Mail To Selected MemberShips" class="btn btn-default" />
+</form>
+<script>
+    var checkall = document.getElementById("checkall");
+    var myform = document.getElementsByName("c");
+    checkall.onclick = function () {
+        if (checkall.checked == true) {
+            for (var i = 0; i < document.getElementsByName("c").length; i++) {
+                myform[i].checked = true;
+            }
+        } else {
+            for (var i = 0; i < document.getElementsByName("c").length; i++) {
+                myform[i].checked = false;
+            }
+        }
+    }
+</script>

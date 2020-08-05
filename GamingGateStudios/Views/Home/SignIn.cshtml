@@ -1,0 +1,147 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SignIn</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript">
+         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Meta tag Keywords -->
+    <!-- css files -->
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" /> <!-- Style-CSS -->
+    <link rel="stylesheet" href="css/font-awesome.css"> <!-- Font-Awesome-Icons-CSS -->
+    <link href="~/Content/SignIn/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/SignIn/style.css" rel="stylesheet" />
+    <!-- //css files -->
+    <!-- online-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Orbitron:400,500,700,900" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- //online-fonts -->
+    <style>
+        #messages {
+    padding: 15px 10px;
+    margin: 15px 0;
+    border: 1px solid #ff9900;
+	color:#ff9900;
+}
+#messages p {
+    color: #555;
+    font-size: 14px;
+	font-weight:700;
+}
+    </style>
+</head>
+<body>
+    <div class="w3-agile-banner">
+        <div class="center-container">
+            <!--header-->
+            <div class="header-w3l">
+                <h1>G-G-S <span>signin</span> Form</h1>
+            </div>
+            <!--//header-->
+            <!--main-->
+            <div class="main-content-agile">
+                <div class="wthree-pro">
+                    <h2>SignIn Now</h2>
+                </div>
+                <div class="w3-head-continue">
+                    <h4>Sign in quikly using</h4>
+                </div>
+                <div class="social_icons">
+                    <!-- Facebook -->
+                    <div class="slide-social w3l">
+                        <div id="fb-root"></div>
+                        <a href="#" onclick="loginByFacebook();">
+                            <div class="button">Facebook</div>
+                            <div class="facebook icon"> <i class="facebook"></i> </div>
+                            <div class="facebook slide">
+                                <p>Facebook</p>
+                            </div>
+                            <div class="clear"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="w3-head-continue">
+                    <h4>or use your email</h4>
+                </div>
+                <div class="sub-main-w3">
+                    @if (ViewBag.error != null)
+                    {
+                        <div id="messages">
+                            <h4>@ViewBag.error</h4>
+                        </div>
+                    }
+                    <form action="~/Home/SignIn" method="post">
+                        @Html.AntiForgeryToken()
+                        <input placeholder="E-mail" name="Email" type="email" required="">
+                        <input placeholder="Password" name="Password" type="password" required="">
+                        <div class="rem-w3">
+                            <div class="clear"></div>
+                        </div>
+
+                        <input type="submit" value="Signin">
+                    </form>
+                </div>
+                <div class="w3-head-continue">
+                    <h4>Not a member ? <a href="~/Home/Memberships">signup</a></h4>
+                </div>
+            </div>
+            <!--//main-->
+            <!--footer-->
+            <div class="footer">
+                <p>&copy; @DateTime.Now.Year Gaming Gate Studios. All rights reserved | by <a href="http://www.mediagatestudios.com">Media Gate Studios</a></p>
+            </div>
+            <!--//footer-->
+        </div>
+    </div>
+    <!-- js -->
+    <script type="text/javascript">
+        window.fbAsyncInit = function () {
+            FB.init({appId:'@System.Configuration.ConfigurationManager.AppSettings["FaceID"].ToString()',
+                status: true, // check login status
+                cookie: true, // enable cookies to allow the server to access the session
+                xfbml: true, // parse XFBML
+                oauth: true // enable OAuth 2.0
+            });
+        };
+        (function () {
+            var e = document.createElement('script'); e.async = true;
+            e.src = document.location.protocol +
+            '//connect.facebook.net/en_US/all.js';
+            document.getElementById('fb-root').appendChild(e);
+        }());
+
+        function loginByFacebook() {
+            FB.login(function (response) {
+                if (response.authResponse) {
+                    FacebookLoggedIn(response);
+                } else {
+                    console.log('User cancelled login or did not fully authorize.');
+                }
+            }, { scope: 'user_birthday,user_about_me,user_hometown,user_location,email' });
+        }
+
+        function FacebookLoggedIn(response) {
+            var loc = 'SignIn';
+            if (loc.indexOf('?') > -1)
+                window.location = loc + '&authprv=facebook&access_token=' + response.authResponse.accessToken;
+            else
+                window.location = loc + '?authprv=facebook&access_token=' + response.authResponse.accessToken;
+        }
+    </script>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/SignIn/jquery-2.1.4.min.js"></script>
+    <!-- //js -->
+</body>
+</html>

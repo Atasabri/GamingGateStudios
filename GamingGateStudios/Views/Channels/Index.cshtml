@@ -1,0 +1,46 @@
+﻿@model IEnumerable<GamingGateStudios.Models.Channel>
+
+@{
+    ViewBag.Title = "Channels";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Channels</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            Num Of Splashes
+        </th>
+        <th>
+            Photo
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Splashes.Count)
+        </td>
+        <td>
+            <img src="~/Uploads/Channels/@(item.ID).jpg" alt="" width="50" height="50" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

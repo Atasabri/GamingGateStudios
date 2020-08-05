@@ -1,0 +1,61 @@
+﻿@model IEnumerable<GamingGateStudios.Models.AD>
+
+@{
+    ViewBag.Title = "ADS";
+    Layout = "~/Areas/Operators/Views/Shared/_Layout.cshtml";
+}
+
+<div style="width:90%; margin:0 auto;">
+    <h2>ADS</h2>
+    <div class="graph">
+        <div class="tables" style="align-items:center">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr style="align-items:center">
+                        <th>#</th>
+                        <th>@Html.DisplayNameFor(model => model.Name)</th>
+                        <th>@Html.DisplayNameFor(model => model.Enable)</th>
+                        <th>@Html.DisplayNameFor(model => model.CPM)</th>
+                        <th>@Html.DisplayNameFor(model => model.Ads_Clients.Name)</th>
+                        <th>@Html.DisplayNameFor(model => model.Click)</th>
+                    </tr>
+                </thead>
+                <tbody style="align-items:center">
+                    @{
+                        int counter = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        counter++;
+                        <tr>
+                            <th scope="row">@counter</th>
+                            <td>@Html.ActionLink(item.Name, "DetailsAD", new { id = item.ID })</td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Enable)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CPM)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Ads_Clients.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Click)
+                            </td>
+                            <td>
+                                <a href="~/Operators/OAgencies/EditAD/@item.ID" style="cursor:pointer;-webkit-appearance:button;background-color: #002561;border: 4px solid #002561;color: #fff;padding: .4em 1em;margin-top: 1em;">Edit</a>
+                                @using (Html.BeginForm("DeleteAD", "OAgencies", new { id = item.ID }))
+                                {
+                                    <input id="Submit1" style="background-color:red" type="submit" value="Delete" onclick="return confirm('Are You Sure You Want To Delete This AD ?!');" />
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

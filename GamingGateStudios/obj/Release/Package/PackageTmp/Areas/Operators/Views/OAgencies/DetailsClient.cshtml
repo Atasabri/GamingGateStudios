@@ -1,0 +1,44 @@
+﻿@model GamingGateStudios.Models.Ads_Clients
+
+@{
+    ViewBag.Title = "DetailsClient";
+    Layout = "~/Areas/Operators/Views/Shared/_Layout.cshtml";
+}
+<div style="width:800px; margin:0 auto;">
+
+    <h2>Client Details</h2>
+
+    <div>
+        <h4>Client </h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Target_CPM)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Target_CPM)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "EditClient", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+ </div>

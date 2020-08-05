@@ -1,0 +1,77 @@
+﻿@model GamingGateStudios.Models.AD
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Operators/Views/Shared/_Layout.cshtml";
+}
+<div style="width:800px; margin:0 auto;">
+
+    <h2>@Model.Name Details</h2>
+
+    <div>
+        <h4>AD</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Enable)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Enable)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Width)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Width)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Height)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Height)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CPM)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CPM)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Link)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Link)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Click)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Click)
+            </dd>
+            <dt>
+                Photo
+            </dt>
+            <dd>
+                <img src="~/Uploads/ADS/@(Model.ID).jpg" alt="" />
+            </dd>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    </div>

@@ -1,0 +1,106 @@
+﻿@model GamingGateStudios.Models.AD
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ADS Details</h2>
+
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Enable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Enable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Width)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Width)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Height)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Height)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CPM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPM)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Link)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Click)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Click)
+        </dd>
+        @if (Model.Ads_Clients.Agency_ID == null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Ads_Clients.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Ads_Clients.Name)
+            </dd>
+        }
+        else
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Ads_Clients.Agency.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Ads_Clients.Agency.Name)
+            </dd>
+        }
+        <dt>
+            Photo
+        </dt>
+        <dd>
+            <img src="~/Uploads/ADS/@(Model.ID).jpg" alt="" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index") |
+    @if (Model.Ads_Clients.Agency_ID == null)
+    {
+        <span>@Html.ActionLink("Go To Client", "Details", "Ads_Clients", new { @id = Model.Client_ID }, null)</span>
+    }
+    else
+    {
+        <span>@Html.ActionLink("Go To Agency", "Details", "Agencies", new { @id = Model.Ads_Clients.Agency_ID }, null)</span>
+    }
+</p>

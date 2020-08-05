@@ -1,0 +1,45 @@
+﻿@model GamingGateStudios.Models.Channel
+
+@{
+    ViewBag.Title = "Data";
+    Layout = "~/Areas/Operators/Views/Shared/_Layout.cshtml";
+}
+
+<div style="width:800px; margin:0 auto;">
+
+    <h2>Your Data</h2>
+
+    <div>
+        <h4></h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Username)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Username)
+            </dd>
+            <dt>
+                Num Of Splashes
+            </dt>
+            <dd>
+                @Model.Splashes.Count
+            </dd>
+            <dt>
+                Photo
+            </dt>
+            <dd>
+                <img src="~/Uploads/Channels/@(Model.ID).JPG" alt="" width="500" height="300" />
+            </dd>
+        </dl>
+    </div>
+</div>

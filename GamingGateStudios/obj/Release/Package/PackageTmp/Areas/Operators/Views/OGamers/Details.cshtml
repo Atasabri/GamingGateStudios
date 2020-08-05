@@ -1,0 +1,119 @@
+﻿@model GamingGateStudios.Models.Gamer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Operators/Views/Shared/_Layout.cshtml";
+}
+<div style="width:800px; margin:0 auto;">
+    <h2>@Model.UserName Details</h2>
+
+    <div>
+        <h4>Gamer</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Member)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Member)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Country)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Country)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateOfBirth)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Gender)
+            </dt>
+
+            <dd>
+                @if (Model.Gender == 1)
+                {
+                    <span>Male</span>
+                }
+                else
+                { <span>Female</span>}
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Points)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Points)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Tries)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Tries)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Mony_Send)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Mony_Send)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Money_Token)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Money_Token)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Active)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Active)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Game.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Game.Name)
+            </dd>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    </div>

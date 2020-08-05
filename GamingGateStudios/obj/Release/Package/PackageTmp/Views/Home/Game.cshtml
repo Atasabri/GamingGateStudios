@@ -1,0 +1,268 @@
+﻿@using GamingGateStudios.Models
+@model GamingGateStudios.Models.Game
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<style>
+
+    font-face {
+    font-family: 'Pacifico';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Pacifico'), url('http://themes.googleusercontent.com/font?kit=fKnfV28XkldRW297cFLeqfesZW2xOQ-xsNqO47m55DA') format('truetype');
+}
+#button {
+    display: inline-block;
+    margin-top:50px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow:    0 8px 0 #c5376d, 0 15px 20px rgba(0, 0, 0, .35);
+    -moz-box-shadow: 0 8px 0 #c5376d, 0 15px 20px rgba(0, 0, 0, .35);
+    box-shadow: 0 8px 0 #c5376d, 0 15px 20px rgba(0, 0, 0, .35);
+    -webkit-transition: -webkit-box-shadow .1s ease-in-out;
+    -moz-transition: -moz-box-shadow .1s ease-in-out;
+    -o-transition: -o-box-shadow .1s ease-in-out;
+    transition: box-shadow .1s ease-in-out;
+    font-size: 50px;
+    color: #fff;
+}
+
+#button span {
+    display: inline-block;
+    padding: 20px 30px;
+    background-color: #ec528d;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(hsla(338, 90%, 80%, .8)), to(hsla(338, 90%, 70%, .2)));
+    background-image: -webkit-linear-gradient(hsla(338, 90%, 80%, .8), hsla(338, 90%, 70%, .2));
+    background-image: -moz-linear-gradient(hsla(338, 90%, 80%, .8), hsla(338, 90%, 70%, .2));
+    background-image: -o-linear-gradient(hsla(338, 90%, 80%, .8), hsla(338, 90%, 70%, .2));
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: inset 0 -1px 1px rgba(255, 255, 255, .15);
+    -moz-box-shadow: inset 0 -1px 1px rgba(255, 255, 255, .15);
+    box-shadow: inset 0 -1px 1px rgba(255, 255, 255, .15);
+    font-family: 'Pacifico', Arial, sans-serif;
+    line-height: 1;
+    text-shadow: 0 -1px 1px rgba(175, 49, 95, .7);
+    -webkit-transition: background-color .2s ease-in-out, -webkit-transform .1s ease-in-out;
+    -moz-transition: background-color .2s ease-in-out, -moz-transform .1s ease-in-out;
+    -o-transition: background-color .2s ease-in-out, -o-transform .1s ease-in-out;
+    transition: background-color .2s ease-in-out, transform .1s ease-in-out;
+}
+
+#button:hover span {
+    background-color: #9b8c6e;
+    text-shadow: 0 -1px 1px rgba(175, 49, 95, .9), 0 0 5px rgba(255, 255, 255, .8);
+}
+
+#button:active, #button:focus {
+    -webkit-box-shadow:    0 8px 0 #c5376d, 0 12px 10px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0 8px 0 #c5376d, 0 12px 10px rgba(0, 0, 0, .3);
+    box-shadow:    0 8px 0 #c5376d, 0 12px 10px rgba(0, 0, 0, .3);
+}
+
+#button:active span {
+    -webkit-transform: translate(0, 4px);
+    -moz-transform: translate(0, 4px);
+    -o-transform: translate(0, 4px);
+    transform: translate(0, 4px);
+}
+</style>
+<script>
+    document.getElementById('button').onclick = (function () {
+        document.getElementsByTagName('audio')[0].play();
+        document.getElementsByTagName('span')[0].innerHTML = 'Hello bitchception!';
+        return false;
+    });
+</script>
+<!-- Games Page Starts here -->
+@{
+    AD ad = DEL.GetAD(728, 90);
+    if (ad != null)
+    {
+        if (ad.Link != null)
+        {
+            <div style="margin-left:20%;margin-right:20%">
+                <a href="~/Home/ADClick/@ad.ID" target="_blank"><img src="~/Uploads/ADS/@(ad.ID).jpg" /></a>
+            </div>
+        }
+        else
+        {
+            <div style="margin-left:20%;margin-right:20%">
+                <img src="~/Uploads/ADS/@(ad.ID).jpg" />
+            </div>
+        }
+    }
+}
+<div class="games">
+    <div class="container">
+        <div class="page-path">
+            <ul class="path-list">
+                <li><a href="index.html"></a></li>
+                <li><a href="blog.html"></a></li>
+                <li class="act"></li>
+            </ul>
+            <p><a href="index.html"></a></p>
+            <div class="clearfix"></div>
+        </div>
+        <h3 class="page-header">
+        </h3>
+        <div class="blog-content">
+            @if (Request.Cookies["Language"] != null)
+            {
+                if (Request.Cookies["Language"].Value == "ar")
+                {
+                    <div class="blog-post">
+
+                        <h3 class="tittle_agile_w3">@Model.Name_AR</h3>
+                        <div class="heading-underline">
+                            <div class="h-u1"></div><div class="h-u2"></div><div class="h-u3"></div><div class="clearfix"></div>
+                        </div>
+                        <img src="~/Uploads/Games/@(Model.ID).jpg" alt="">
+                        <div class="about-details">
+                            <h3>@Model.Description_AR</h3>
+                            </div>
+                        </div>
+                }
+                else
+                {
+                    <div class="blog-post">
+
+                        <h3 class="tittle_agile_w3">@Model.Name</h3>
+                        <div class="heading-underline">
+                            <div class="h-u1"></div><div class="h-u2"></div><div class="h-u3"></div><div class="clearfix"></div>
+                        </div>
+                        <img src="~/Uploads/Games/@(Model.ID).jpg" alt="">
+                        <div class="about-details">
+                            <h3>@Model.Description</h3>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="blog-post">
+
+                    <h3 class="tittle_agile_w3">@Model.Name</h3>
+                    <div class="heading-underline">
+                        <div class="h-u1"></div><div class="h-u2"></div><div class="h-u3"></div><div class="clearfix"></div>
+                    </div>
+                    <img src="~/Uploads/Games/@(Model.ID).jpg" alt="">
+                    <div class="about-details">
+                        <h3>@Model.Description</h3>
+                    </div>
+                </div>
+            }
+            @{
+                string agent = Request.UserAgent.ToString().ToLower();
+                if (agent.Contains("windows phone")&&Model.Windows_URL!=null)
+                {
+                    <a href="@Model.Windows_URL" id = "button" >
+                           <span> Micrsoft Store </span>
+                     </a>
+                }
+                else if (agent.Contains("android")&&agent.Contains("linux") &&Model.Android_URL!=null)
+                {
+                    <a href="@Model.Android_URL" id="button">
+                        <span>Google Play</span>
+                    </a>
+                 }
+                else if (agent.Contains("iphone") || agent.Contains("mac") || agent.Contains("ipad")&&Model.Ituens_URL!=null)
+                {
+                    <a href="@Model.Ituens_URL" id="button">
+                        <span>Ituens</span>
+                    </a>
+                }
+                else
+                {
+                    <a href="@Model.Game_Link" target="_blank" id="button">
+                        <span>@SiteResource.Playnow</span>
+                    </a>
+                }
+                if (Model.Facebook_URL != null)
+                {
+                    <a href="@Model.Facebook_URL" id="button">
+                        <span>FaceBook</span>
+                    </a>
+                }
+                if (Model.KindleFire_URL != null)
+                {
+                    <a href="@Model.KindleFire_URL" id="button">
+                        <span>KindleFire</span>
+                    </a>
+                }
+                if (Model.EB_URL != null)
+                {
+                    <a href="@Model.EB_URL" id="button">
+                        <span>EB</span>
+                    </a>
+                }
+            }
+
+        </div>
+        <div class="blog-sidebar">
+            <h3 class="page-header">@GamingGateStudios.SiteResource.NewGames</h3>
+            <ul class="product-categories color">
+                @if (Request.Cookies["Language"] != null)
+                {
+                    if (Request.Cookies["Language"].Value == "ar")
+                    {
+                        foreach (var item in new DB().Games.Select(x => new { id = x.ID, name = x.Name_AR, num = x.Gamers.Count }).OrderByDescending(x => x.id).Take(15))
+                        {
+                            <li class="cat-item cat-item-42"><a href="~/Home/Game/@item.id">@item.name</a> <span class="count">@item.num</span></li>
+                        }
+                    }
+                    else
+                    {
+                        foreach (var item in new DB().Games.Select(x => new { id = x.ID, name = x.Name, num = x.Gamers.Count }).OrderByDescending(x => x.id).Take(15))
+                        {
+                            <li class="cat-item cat-item-42"><a href="~/Home/Game/@item.id">@item.name</a> <span class="count">@item.num</span></li>
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (var item in new DB().Games.Select(x => new { id = x.ID, name = x.Name, num = x.Gamers.Count }).OrderByDescending(x => x.id).Take(15))
+                    {
+                        <li class="cat-item cat-item-42"><a href="~/Home/Game/@item.id">@item.name</a> <span class="count">@item.num</span></li>
+                    }
+                }         
+            </ul>
+            <h3 class="page-header">@SiteResource.Subscribe</h3>
+            <div class="subscribe">
+                <h4>@SiteResource.Subscribe</h4>
+                <form action="~/Home/Subscribe" method="post">
+                    <input type="text" name="Email" placeholder="@SiteResource.Email" required="" />
+                    <input type="submit" value="@SiteResource.Subscribe" />
+                </form>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+    </div>
+</div>
+<br />
+@if (Model.Trailer != null)
+{
+    int id = DEL.GetAD(728, 90).ID;
+    <a href="~/Home/ADClick/@id" target="_blank">
+    <div id="vidwrap" onclick="play();" style="width:80%;height:600px;margin-left:10%;margin-right:10%;cursor:pointer;">
+        <div onclick="play();">
+            <h1>Click AD To Play Video</h1>
+            <br/>
+            <div style="margin-left:20%;margin-right:20%">
+                <img src="~/Uploads/ADS/@(ad.ID).jpg" />
+            </div>
+        </div>
+    </div>
+        </a>
+
+    <script type="text/javascript">
+        function play() {
+            document.getElementById('vidwrap').innerHTML = '<iframe src="@(Model.Trailer)" frameborder="0" style="width:80%;height:80%;margin-left:10%;margin-right:10%" gesture="media" allowfullscreen> </iframe>';
+    }
+    </script>
+}
+

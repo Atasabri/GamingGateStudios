@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Admin Panel</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .agile_short_dropdown {
+            border-radius: 0;
+            background: #ffffff;
+            text-align: center;
+            padding: 0;
+            border: none;
+        }
+
+            .agile_short_dropdown li a {
+                text-transform: uppercase;
+                color: #212121;
+                font-size: 12px;
+                font-weight: 500;
+                padding: .8em 0;
+                border-bottom: 1px solid #ececef;
+            }
+
+            .agile_short_dropdown > li > a:hover {
+                color: #212121;
+                text-decoration: none;
+                background-color: #0094ff;
+            }
+
+        .navbar-nav .open .dropdown-menu {
+            background-color: #ffffff;
+            padding: 10px 0;
+        }
+
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    @using GamingGateStudios.Models
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="~/Home/Home"><img src="~/logo.jpg" width="60" height="50" style="border-radius: 50%;" /></a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @Html.ActionLink("G-G-S", "Index", "Admins", new { area = "" }, new { @class = "navbar-brand" })
+                }
+                else
+                {
+                    @Html.ActionLink("Admin Panel", "Login", "Auth", new { area = "" }, new { @class = "navbar-brand" })
+                }
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle hvr-underline-from-center" style="font-size:16px" data-toggle="dropdown">Subscribers<b class="fa fa-caret-down"></b></a>
+                            <ul class="dropdown-menu agile_short_dropdown">
+                                <li class="f" style="font-size:16px">@Html.ActionLink("Users", "Index", "Users")</li>
+                                <li class="f" style="font-size:16px">@Html.ActionLink("Contacts", "Index", "Contacts")</li>
+                                <li class="f" style="font-size:16px">@Html.ActionLink("Subscribers", "Index", "Subscribers")</li>
+                                <li class="f" style="font-size:16px">@Html.ActionLink("MemberShip", "Index", "MemberShips")</li>
+                                <li class="f" style="font-size:16px">@Html.ActionLink("GGP Pricing", "Index", "GGBDeals")</li>
+                                <li class="f" style="font-size:16px">@Html.ActionLink("ALL", "All", "Subscribers")</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle hvr-underline-from-center" style="font-size:16px" data-toggle="dropdown">Gallery<b class="fa fa-caret-down"></b></a>
+                            <ul class="dropdown-menu agile_short_dropdown">
+                                <li class="f" style="font-size:16px">@Html.ActionLink("Create New", "Create", "Portfolios")</li>
+                                <li class="f" style="font-size:16px">@Html.ActionLink("Show Gallery", "Index", "Portfolios")</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle hvr-underline-from-center" style="font-size:16px" data-toggle="dropdown">Games<b class="fa fa-caret-down"></b></a>
+                            <ul class="dropdown-menu agile_short_dropdown">
+                                <li class="f" style="font-size:16px">@Html.ActionLink("Create New", "Create", "Games")</li>
+                                <li class="f" style="font-size:16px">@Html.ActionLink("Show Games", "Index", "Games")</li> 
+                                <li class="f" style="font-size:16px">@Html.ActionLink("Gamers", "Index", "Gamers")</li>
+                                <li class="f" style="font-size:16px">@Html.ActionLink("Deals", "Index", "Deals")</li>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle hvr-underline-from-center" style="font-size:16px" data-toggle="dropdown">Advertisment<b class="fa fa-caret-down"></b></a>
+                            <ul class="dropdown-menu agile_short_dropdown">
+                                <li class="f" style="font-size:16px">@Html.ActionLink("Ads Clients", "Index", "Ads_Clients")</li>
+                                <li class="f" style="font-size:16px">@Html.ActionLink("ADS", "Index", "ADs")</li>
+                                <li class="f" style="font-size:16px">@Html.ActionLink("Agencies", "Index", "Agencies")</li>
+                                  <li class="f" style="font-size:16px">@Html.ActionLink("Channels", "Index", "Channels")</li>
+                                <li class="f" style="font-size:16px">@Html.ActionLink("Splashes", "Index", "Splashes")</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle hvr-underline-from-center" style="font-size:16px" data-toggle="dropdown">Other<b class="fa fa-caret-down"></b></a>
+                            <ul class="dropdown-menu agile_short_dropdown">
+                                <li class="f" style="font-size:16px">@Html.ActionLink("Third Partner", "Index", "Third_Partner")</li>
+                                <li class="f" style="font-size:16px">@Html.ActionLink("Prizes", "Index", "Prizes")</li>
+                                <li class="f" style="font-size:16px">@Html.ActionLink("Winners", "Index", "Winners")</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle hvr-underline-from-center" style="font-size:16px" data-toggle="dropdown">Home - Operators<b class="fa fa-caret-down"></b></a>
+                            <ul class="dropdown-menu agile_short_dropdown">
+                                <li class="f" style="font-size:16px">@Html.ActionLink("Clients", "Index", "OGames",new {area="Operators" },null)</li>
+                                <li class="f" style="font-size:16px">@Html.ActionLink("Home Page", "Home", "Home")</li>
+                            </ul>
+                        </li> 
+                        <li>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </li>
+                        <li><img src="~/Uploads/Admins/@(new DB().Admins.First(x=>x.Username==User.Identity.Name).ID).jpg" alt="" width="50" height="50" style="border-radius: 50%;" /><br /></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle hvr-underline-from-center" style="font-size:16px" data-toggle="dropdown">@User.Identity.Name<b class="fa fa-caret-down"></b></a>
+                            <ul class="dropdown-menu agile_short_dropdown">
+                                <li class="f" style="font-size:16px">@Html.ActionLink("Profile", "Details", "Admins", new { id = new DB().Admins.First(x => x.Username == User.Identity.Name).ID }, null)</li>
+                                <li class="f" style="font-size:16px">@Html.ActionLink("Admins", "Index", "Admins")</li>
+                                <li class="f" style="font-size:16px">@Html.ActionLink("Sign Out", "Signout", "Auth")</li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Sign In", "Login", "Auth")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Gaming Gate Studios</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script>
+        var _URL = window.URL || window.webkitURL;
+
+        $("#file").change(function (e) {
+            var file, img;
+
+
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function () {
+                    alert("The ADS Photo Directions Is => "+ this.width + " : " + this.height);
+                };
+                img.onerror = function () {
+                    alert("not a valid file: " + file.type);
+                };
+                img.src = _URL.createObjectURL(file);
+
+
+            }
+
+        });
+    </script>
+
+    <script type="text/javascript" language="javascript">
+        //Check if the top location is same as the current location
+        if (top.location.hostname != self.location.hostname) {
+            //If not then set the top to you current
+            top.location.href = self.location.href;
+        }
+    </script>
+
+</body>
+</html>

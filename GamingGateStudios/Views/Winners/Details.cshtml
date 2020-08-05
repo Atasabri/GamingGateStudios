@@ -1,0 +1,66 @@
+﻿@model GamingGateStudios.Models.Winner
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Winner</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Received)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Received)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gamer.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gamer.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prize.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prize.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Name)
+        </dd>
+
+        <dt>
+            Gamer
+        </dt>
+        @Html.ActionLink("Go to Gamer", "Details", "Gamers", new { id = Model.Gamer_ID }, null)
+        <dd>
+            
+        </dd>
+        <dt>
+            User
+        </dt>
+
+        <dd>
+            @Html.ActionLink("Go to User", "Details", "Users", new { id = Model.User_ID }, null)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

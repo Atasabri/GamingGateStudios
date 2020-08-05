@@ -1,0 +1,97 @@
+﻿@model GamingGateStudios.Models.Prize
+@{
+    #region Code
+    string language = "en";
+    if (Request.Cookies["Language"] != null)
+    {
+        if (Request.Cookies["Language"].Value == "ar")
+        {
+            language = "ar";
+        }
+    }
+    if (language == "ar")
+    {
+        ViewBag.Title = Model.Name_AR;
+    }
+    else
+    {
+        ViewBag.Title = Model.Name;
+    }
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    #endregion
+}
+
+
+
+<link href="~/Content/Input.css" rel="stylesheet" />
+
+@if (language == "ar")
+{
+    <h3 class="tittle_agile_w3">@Model.Name_AR</h3>
+}
+else
+{
+    <h3 class="tittle_agile_w3">@Model.Name</h3>
+}
+<div class="heading-underline">
+    <div class="h-u1"></div><div class="h-u2"></div><div class="h-u3"></div><div class="clearfix"></div>
+</div>
+<form action="~/Home/Prize" method="post">
+    @Html.AntiForgeryToken()
+    <section class="content bgcolor-5">
+        <h2>@SiteResource.GameData</h2>
+        @if (ViewBag.error != null)
+        {
+            <div id="messages">
+                <h4>@ViewBag.error</h4>
+            </div>
+        }
+        @Html.Hidden("Prize_ID", Model.ID)
+        
+        <span class="input input--minoru">
+            <input class="input__field input__field--yoko" type="text" id="input-16" name="Phone" required="Required" />
+            <label class="input__label input__label--yoko" for="input-16">
+                <span class="input__label-content input__label-content--yoko">@SiteResource.GPhone</span>
+            </label>
+            <input class="input__field input__field--yoko" type="password" id="input" name="Password" required="Required" />
+            <label class="input__label input__label--yoko" for="input">
+                <span class="input__label-content input__label-content--yoko">@SiteResource.GPassword</span>
+            </label>
+            @if (ViewData["Pay"] != null)
+            {
+                @Html.Hidden("Pay", ViewData["Pay"])
+                if (Convert.ToInt16(ViewData["Pay"]) == 1)
+                {
+                    <input class="input__field input__field--yoko" type="text" id="input1" name="Code" required="Required" />
+                     <label class="input__label input__label--yoko" for="input1">
+                     <span class="input__label-content input__label-content--yoko">PayZa Email</span>
+                     </label>
+                }
+            }
+
+            @if (ViewData["Pay"] != null)
+            {
+                <button class="submit" type="submit">@SiteResource.Pay</button>
+            }
+            else
+            {
+                <button class="submit" type="submit">@SiteResource.redeem</button>
+            }
+        </span>
+    </section>
+</form>
+<script>
+    var phone = document.getElementById("input-16");
+    phone.onchange = function () {
+        var p = document.getElementById("input-16");
+        if (p.value.length > 11 || isNaN(p.value)) {
+            document.getElementById("input-16").setCustomValidity("Phone Must Be < 12 Number & No Chars");
+        }else if(p.value=="")
+        {
+            document.getElementById("input-16").setCustomValidity('Please Fill This Field');
+        } else {
+            document.getElementById("input-16").setCustomValidity('');
+        }
+    }
+</script>
+

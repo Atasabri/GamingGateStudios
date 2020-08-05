@@ -1,0 +1,123 @@
+﻿@using GamingGateStudios.Models
+@model List<GamingGateStudios.Models.Game>
+@{
+    ViewBag.Title = SiteResource.Games;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@{
+    AD ad = DEL.GetAD(728, 90);
+    if (ad != null)
+    {
+        if (ad.Link != null)
+        {
+            <div style="margin-left:20%;margin-right:20%">
+                <a href="~/Home/ADClick/@ad.ID" target="_blank"><img src="~/Uploads/ADS/@(ad.ID).jpg" /></a>
+            </div>
+        }
+        else
+        {
+            <div style="margin-left:20%;margin-right:20%">
+            <img src="~/Uploads/ADS/@(ad.ID).jpg" />
+            </div>
+        }
+    }
+}
+<h3 class="tittle_agile_w3">@SiteResource.Games</h3>
+<div class="heading-underline">
+    <div class="h-u1"></div><div class="h-u2"></div><div class="h-u3"></div><div class="clearfix"></div>
+</div>
+<!-- Games Page Starts here -->
+<div class="games">
+    <div class="container">
+        <div class="page-path">
+            <ul class="path-list">
+                <li><a href="index.html"></a></li>
+                <li class="act"></li>
+            </ul>
+            <p><a href="index.html"></a></p>
+            <div class="clearfix"></div>
+        </div>
+        <h3 class="page-header">
+        </h3>
+        <div class="main" style="width:85%">
+@if (Request.Cookies["Language"] != null)
+{
+    if (Request.Cookies["Language"].Value == "ar")
+    {
+        foreach (var item in Model.OrderByDescending(x => x.ID))
+        {
+                <div class="view view-first">
+                    <img src="~/Uploads/Games/@(item.ID).jpg" />
+                    <div class="mask">
+                      <h2>@item.Name_AR</h2>
+                       <p>@string.Join(" ", item.Description_AR.Split(' ').Take(10).ToArray()) ...</p>
+                      <a href="~/Home/Game/@item.ID" class="info">العب</a>                       
+                    </div>
+                </div>
+        }
+    }
+    else
+    {
+        foreach (var item in Model.OrderByDescending(x => x.ID))
+        {
+            <div class="view view-first">
+                <img src="~/Uploads/Games/@(item.ID).jpg" />
+                <div class="mask">
+                    <h2>@item.Name</h2>
+                    <p>@string.Join(" ", item.Description.Split(' ').Take(10).ToArray()) ...</p>
+                    <a href="~/Home/Game/@item.ID" class="info">Play It</a>
+                </div>
+            </div>
+        }
+    }
+}
+else
+{
+    foreach (var item in Model.OrderByDescending(x => x.ID))
+    {
+        <div class="view view-first">
+            <img src="~/Uploads/Games/@(item.ID).jpg" />
+            <div class="mask">
+                <h2>@item.Name</h2>
+                <p>@string.Join(" ", item.Description.Split(' ').Take(10).ToArray()) ...</p>
+                <a href="~/Home/Game/@item.ID" class="info">Play It</a>
+            </div>
+        </div>
+    }
+}
+        </div>
+        <div class="side-bar">
+            <h4>@SiteResource.bestgames</h4>
+            <ul class="game-list">
+                @if (Request.Cookies["Language"] != null)
+                {
+                    if (Request.Cookies["Language"].Value == "ar")
+                    {
+                        foreach (var item in Model.OrderByDescending(x=>x.Gamers.Count).Take(20))
+                        {
+                            <li><a href="~/Home/Game/@item.ID">@item.Name_AR</a></li>
+                        }
+                    }
+                    else
+                    {
+                        foreach (var item in Model.OrderByDescending(x => x.Gamers.Count).Take(20))
+                        {
+                            <li><a href="~/Home/Game/@item.ID">@item.Name</a></li>    
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (var item in Model.OrderByDescending(x => x.Gamers.Count).Take(20))
+                    {
+                        <li><a href="~/Home/Game/@item.ID">@item.Name</a></li>     
+                    }
+                }  
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<!-- Games Page Ends here -->
+

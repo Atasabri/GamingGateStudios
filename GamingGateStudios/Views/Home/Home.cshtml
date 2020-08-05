@@ -1,0 +1,81 @@
+﻿@using GamingGateStudios.Models
+@model List<GamingGateStudios.Models.Game>
+@{
+    ViewBag.Title = SiteResource.Home;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="banner"></div>
+<div class="banner-bot">
+    <div class="container">
+        <h3 class="tittle_agile_w3">@SiteResource.hello</h3>
+        <div class="heading-underline">
+            <div class="h-u1"></div><div class="h-u2"></div><div class="h-u3"></div><div class="clearfix"></div>
+        </div>
+        <p>@SiteResource.Homedescription1</p>
+          <p>@SiteResource.Homedescription2</p>    
+            <nav class="cl-effect-3"><a href="~/Home/About">@SiteResource.More</a></nav>
+    </div>
+</div>
+<!-- Games Page Starts here -->
+<h3 class="tittle_agile_w3">@SiteResource.NewGames</h3>
+<div class="heading-underline">
+    <div class="h-u1"></div><div class="h-u2"></div><div class="h-u3"></div><div class="clearfix"></div>
+</div>
+        <div class="games">
+            <div class="container">
+                <div class="page-path">
+                    <ul class="path-list"></ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="main" style="width:100%;">
+                    @if (Request.Cookies["Language"] != null)
+                    {
+                        if (Request.Cookies["Language"].Value == "ar")
+                        {
+                            foreach (var item in Model.OrderByDescending(x => x.ID).Take(6))
+                            {
+                                <div class="view view-first">
+                                    <img src="~/Uploads/Games/@(item.ID).jpg" />
+                                    <div class="mask">
+                                        <h2>@item.Name_AR</h2>
+                                        <p>@string.Join(" ", item.Description_AR.Split(' ').Take(10).ToArray()) ...</p>
+                                        <a href="~/Home/Game/@item.ID" class="info">العب</a>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            foreach (var item in Model.OrderByDescending(x => x.ID).Take(6))
+                            {
+                                <div class="view view-first">
+                                    <img src="~/Uploads/Games/@(item.ID).jpg" />
+                                    <div class="mask">
+                                        <h2>@item.Name</h2>
+                                        <p>@string.Join(" ", item.Description.Split(' ').Take(10).ToArray()) ...</p>
+                                        <a href="~/Home/Game/@item.ID" class="info">Play It</a>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (var item in Model.OrderByDescending(x => x.ID).Take(6))
+                        {
+                            <div class="view view-first">
+                                <img src="~/Uploads/Games/@(item.ID).jpg" />
+                                <div class="mask">
+                                    <h2>@item.Name</h2>
+                                    <p>@string.Join(" ", item.Description.Split(' ').Take(10).ToArray()) ...</p>
+                                    <a href="~/Home/Game/@item.ID" class="info">Play It</a>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!-- Games Page Ends here -->
+

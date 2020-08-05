@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5792598df4af4d2f92333173d0f87405" Name="Diagram1">
+        <EntityTypeShape EntityType="GamingGateStudiosModel.Admin" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.AD" Width="1.5" PointX="10" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.Ads_Clients" Width="1.5" PointX="7.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.Channel" Width="1.5" PointX="7.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.Contact" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.Deal_Gamers" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.Deal_Member" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.Deal" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.Gamer" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.Game" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.MemberShip" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.Operator" Width="1.5" PointX="7.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.Portfolio" Width="1.5" PointX="11.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.Prize" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.Splash" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.Subscriber" Width="1.5" PointX="9.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.Third_Partner" Width="1.5" PointX="0.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.User" Width="1.5" PointX="3" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.Winner" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <AssociationConnector Association="GamingGateStudiosModel.FK__ADS__Client_ID__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="GamingGateStudiosModel.FK__Splashes__Channe__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="GamingGateStudiosModel.FK__Deal_Game__Deal___03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="GamingGateStudiosModel.FK__Deal_Game__Gamer__08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="GamingGateStudiosModel.FK__Deal_Memb__Deal___7F2BE32F" ManuallyRouted="false" />
+        <AssociationConnector Association="GamingGateStudiosModel.FK__Deal_Memb__Membe__00200768" ManuallyRouted="false" />
+        <AssociationConnector Association="GamingGateStudiosModel.FK__Deals__Game_ID__7C4F7684" ManuallyRouted="false" />
+        <AssociationConnector Association="GamingGateStudiosModel.FK__Winners__Gamer_I__0A9D95DB" ManuallyRouted="false" />
+        <AssociationConnector Association="GamingGateStudiosModel.FK_Gamers_Games" ManuallyRouted="false" />
+        <AssociationConnector Association="GamingGateStudiosModel.FK__Users__Member_ID__04E4BC85" ManuallyRouted="false" />
+        <AssociationConnector Association="GamingGateStudiosModel.FK__Prizes__Third_Pa__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="GamingGateStudiosModel.FK__Winners__Prize_I__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="GamingGateStudiosModel.FK__Winners__User_ID__75A278F5" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.GGBDeal" Width="1.5" PointX="3" PointY="24" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.Users_GGBDeals" Width="1.5" PointX="5.25" PointY="20" />
+        <AssociationConnector Association="GamingGateStudiosModel.FK__Users_GGB__User___55F4C372" />
+        <AssociationConnector Association="GamingGateStudiosModel.FK__Users_GGB__GGBDe__5224328E" />
+        <EntityTypeShape EntityType="GamingGateStudiosModel.Agency" Width="1.5" PointX="5.5" PointY="13.625" />
+        <AssociationConnector Association="GamingGateStudiosModel.FK__Ads_Clien__Agenc__690797E6" />
+        <AssociationConnector Association="GamingGateStudiosModel.FK__Splashes__Game_I__6AEFE058" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

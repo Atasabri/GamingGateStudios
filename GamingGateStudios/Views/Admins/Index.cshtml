@@ -1,0 +1,59 @@
+﻿@using GamingGateStudios.Models
+@model IEnumerable<Admin> 
+@{
+    ViewBag.Title = "Admins";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Admins</h2>
+@if (new DB().Admins.First(x => x.Username == User.Identity.Name).Admin_Type == 1)
+{
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Admin_Type)
+        </th>
+        <th>
+            Photo
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @if(item.Admin_Type==1)
+            {
+                <span>Manager</span>
+            }
+            else
+            {
+                <span>Normal</span>
+            }
+        </td>
+        <td>
+            <img src="~/Uploads/Admins/@(item.ID).jpg" alt="" width="50" height="50" style="border-radius:50%" />
+        </td>
+
+        @if (new DB().Admins.Single(x => x.Username == User.Identity.Name).Admin_Type == 1)
+        {
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        }
+    </tr>
+}
+
+</table>

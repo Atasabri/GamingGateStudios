@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    @using GamingGateStudios.Models
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - G-G-S</title>
+    <link href="~/Content/Profile/style.css" rel="stylesheet" />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/Scripts/js/jquery-1.11.0.min.js"></script>
+    <!-- Custom Theme files -->
+    <link href="~/Content/Style/css/style.css" rel="stylesheet" />
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,400" rel="stylesheet">
+     <script src="~/Scripts/js/jquery.mixitup.min.js"></script>
+    <script src="~/Scripts/js/modernizr.custom.53451.js"></script>
+    <script src="~/Scripts/js/jquery.magnific-popup.js"></script>
+    <link href="~/Content/Style/css/popuo-box.css" rel="stylesheet" />
+    <link href="~/Content/Style/css/bootstrap.css" rel="stylesheet" />
+    <script>
+$(document).ready(function(c) {
+			$('.alert-close').on('click', function(c){
+				$('.main-agile').fadeOut('slow', function(c){
+					$('.main-agile').remove();
+				});
+			});
+		});
+    </script>
+    <script type="text/javascript">
+$(function () {
+
+	var filterList = {
+
+		init: function () {
+
+			// MixItUp plugin
+			// http://mixitup.io
+			$('#portfoliolist').mixitup({
+				targetSelector: '.portfolio',
+				filterSelector: '.filter',
+				effects: ['fade'],
+				easing: 'snap',
+				// call the hover effect
+				onMixEnd: filterList.hoverEffect()
+			});
+
+		},
+
+		hoverEffect: function () {
+
+			// Simple parallax effect
+			$('#portfoliolist .portfolio').hover(
+				function () {
+					$(this).find('.label').stop().animate({bottom: 0}, 200, 'easeOutQuad');
+					$(this).find('img').stop().animate({top: -30}, 500, 'easeOutQuad');
+				},
+				function () {
+					$(this).find('.label').stop().animate({bottom: -40}, 200, 'easeInQuad');
+					$(this).find('img').stop().animate({top: 0}, 300, 'easeOutQuad');
+				}
+			);
+
+		}
+
+	};
+
+	// Run the show!
+	filterList.init();
+
+
+});
+    </script>
+    <style>
+        ul.agile_forms li a {
+    background: #330066;
+    color: #fff;
+    font-size: 0.9em;
+    padding: 8px 1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+}
+        h3.tittle_agile_w3,.agile_inner_banner_info h2 {
+    font-size: 3em;
+    color: #111;
+    letter-spacing: 1px;
+	text-align:center;
+}
+h3.tittle_agile_w3.two {
+  color:#fff;
+}
+.heading-underline {
+    width: 25%;
+    margin: 1em auto 2em;
+}
+.heading-underline {
+    width: 25%;
+    margin: 1em auto 2em;
+}
+	.heading-underline {
+		width: 25%;
+		margin: 1em auto 1.5em;
+	}
+.h-u1, .h-u3 {
+    width: 30%;
+    float: left;
+    height: 2px;
+    background-color: #EEE;
+    margin-top: 1px;
+}
+.h-u2 {
+    width: 40%;
+    float: left;
+    height: 4px;
+    background-color: #330066;
+}
+    </style>
+</head>
+@{ 
+    string color = "";
+    int GGb = 0;
+    if (Session["AUTH"]!=null)
+    {
+        AuthUser auth = Session["AUTH"] as AuthUser;
+        User user = new DB().Users.Find(auth.ID);
+        if(user.GGB.HasValue)
+        {
+            GGb = user.GGB.Value;
+        }
+        color = auth.Color;
+    }
+}
+<body style="background-color:@color">
+    <!-- Header Starts Here -->
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="~/Home/Home"><img src="~/images/logo.png" alt=""></a>
+            </div>
+            <span class="menu"></span>
+            <div class="navigation">
+                <ul class="navig cl-effect-3">
+
+                    @if (Request.Cookies["Language"] != null)
+                    {
+
+                        if (Request.Cookies["Language"].Value == "en")
+                        {
+                            <li><a href="~/Home/Home">Home</a></li>
+                            <li><a href="~/Home/About">About</a></li>
+                            <li><a href="~/Home/Games">Games</a></li>
+                            <li><a href="~/Home/Prizes">Points</a></li>
+                            <li><a href="~/Home/Deals">Deals</a></li>
+                            <li><a href="~/Home/Contact">Contact</a></li>
+                            if (Session["AUTH"] != null)
+                            {
+                                if ((Session["AUTH"] as AuthUser).Face_ID != null)
+                                {
+                                    string face = (Session["AUTH"] as AuthUser).Face_ID;
+                                    <li><a href="~/Home/ProfilePage"><img src="https://graph.facebook.com/@face/picture" width="50" height="50" style="border-radius:50%" /></a></li>
+                                }
+                                else
+                                {
+                                    int id = (Session["AUTH"] as AuthUser).ID;
+                                    <li><a href="~/Home/ProfilePage"><img src="~/Uploads/Users/@(id).jpg" width="50" height="50" style="border-radius:50%" /></a></li>
+                                }
+                                <li><a href="~/Home/SignOut">Sign Out</a></li>
+                                <li style="color:#95a7a7">@GGb GGP</li>
+                                <li><a href="~/Home/Pricing">&nbsp; + &nbsp;</a></li>
+                                <li><a href="~/Home/Language?Code=ar"><img src="~/images/Languages/ar.png" alt="Arabic Language" /></a></li>
+                            }
+                            else
+                            {
+                                <li><a href="~/Home/Language?Code=ar"><img src="~/images/Languages/ar.png" alt="Arabic Language" /></a></li>
+                                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                                <li>
+                                    <ul class="agile_forms">
+                                        <li><a class="active" href="~/Home/SignIn" data-toggle="modal">Sign In</a> </li>
+                                        <li><a href="~/Home/MemberShips" data-toggle="modal" > Sign Up</a> </li>
+                                    </ul>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+
+                            if (Session["AUTH"] != null)
+                            {
+                                <li><a href="~/Home/Language?Code=en"><img src="~/images/Languages/en.png" alt="English (US) Language" /></a></li>
+                            <li><a href="~/Home/Pricing">&nbsp; + &nbsp;</a></li>
+                            <li style="color:#95a7a7">@GGb GGP</li>
+                            <li><a href="~/Home/SignOut">تسجيل الخروج</a></li>
+
+                                if ((Session["AUTH"] as AuthUser).Face_ID != null)
+                                {
+                                    string face = (Session["AUTH"] as AuthUser).Face_ID;
+                                <li><a href="~/Home/ProfilePage"><img src="https://graph.facebook.com/@face/picture" width="50" height="50" style="border-radius:50%" /></a></li>
+                                }
+                                else
+                                {
+                                    int id = (Session["AUTH"] as AuthUser).ID;
+                                <li><a href="~/Home/ProfilePage"><img src="~/Uploads/Users/@(id).jpg" width="50" height="50" style="border-radius:50%" /></a></li>
+                                }
+                            }
+                            else
+                            {
+                                <li>
+                                    <ul class="agile_forms">
+                                        <li><a href="~/Home/MemberShips" data-toggle="modal">مستخدم جديد</a> </li>
+                                        <li><a class="active" href="~/Home/SignIn" data-toggle="modal"> تسجيل الدخول</a> </li>
+                                    </ul>
+                                </li>
+                                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                                <li><a href="~/Home/Language?Code=en"><img src="~/images/Languages/en.png" alt="English (US) Language" /></a></li>
+                            }
+
+                            <li><a href="~/Home/Contact">تواصل معنا</a></li>
+                            <li><a href="~/Home/Prizes">النقاط</a></li>
+                            <li><a href="~/Home/Deals">المتجر</a></li>
+                            <li><a href="~/Home/Games">الالعاب</a></li>
+                            <li><a href="~/Home/About">عن الموقع</a></li>
+                            <li><a href="~/Home/Home">الرئيسية</a></li>
+                        }
+                    }
+                    else
+                    {
+                        <li><a href="~/Home/Home">Home</a></li>
+                        <li><a href="~/Home/About">About</a></li>
+                        <li><a href="~/Home/Games">Games</a></li>
+                        <li><a href="~/Home/Prizes">Points</a></li>
+                        <li><a href="~/Home/Deals">Deals</a></li>
+                        <li><a href="~/Home/Contact">Contact</a></li>
+                        if (Session["AUTH"] != null)
+                        {
+                            if ((Session["AUTH"] as AuthUser).Face_ID != null)
+                            {
+                                string face = (Session["AUTH"] as AuthUser).Face_ID;
+                            <li><a href="~/Home/ProfilePage"><img src="https://graph.facebook.com/@face/picture" width="50" height="50" style="border-radius:50%" /></a></li>
+                            }
+                            else
+                            {
+                                int id = (Session["AUTH"] as AuthUser).ID;
+                            <li><a href="~/Home/ProfilePage"><img src="~/Uploads/Users/@(id).jpg" width="50" height="50" style="border-radius:50%" /></a></li>
+                            }                        <li><a href="~/Home/SignOut">Sign Out</a></li>
+                        <li style="color:#95a7a7">@GGb GGP</li>
+                        <li><a href="~/Home/Pricing">&nbsp; + &nbsp;</a></li>
+                        <li><a href="~/Home/Language?Code=ar"><img src="~/images/Languages/ar.png" alt="Arabic Language" /></a></li>
+                        }
+                        else
+                        {
+                            <li><a href="~/Home/Language?Code=ar"><img src="~/images/Languages/ar.png" alt="Arabic Language" /></a></li>
+                            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                            <li>
+                                <ul class="agile_forms">
+                                    <li><a class="active" href="~/Home/SignIn" data-toggle="modal"> Sign In</a> </li>
+                                    <li><a href="~/Home/MemberShips" data-toggle="modal"> Sign Up</a> </li>
+                                </ul>
+                            </li>
+                        }
+
+                    }
+                </ul>
+                <div class="clearfix"></div>
+                <script>
+				$( "span.menu" ).click(function() {
+				  $( ".navigation" ).slideToggle( "slow", function() {
+				    // Animation complete.
+				  });
+				});
+                </script>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+        @RenderBody()
+    <!-- What New Part Endss Here -->
+    <!-- Footer Starts Here -->
+    <div class="footer">
+        <div class="container">
+            <ul class="social">
+                <li><a href="https://www.facebook.com" target="_blank"><i class="fa"></i></a></li>
+                <li><a href="https://www.twitter.com" target="_blank"><i class="fb"></i></a></li>
+                <li><a href="https://www.youtube.com" target="_blank"><i class="fc"></i></a></li>
+            </ul>
+            <p>@DateTime.Now.Year by <a href="http://www.mediagatestudios.com">Media Gate Studios</a></p>
+        </div>
+
+    </div>
+    <!-- Footer Ends Here -->
+    <script>
+            var confirm = document.getElementById("con");
+            confirm.onchange = function () {
+                var pass = document.getElementById("Password");
+                if (confirm.value != pass.value) {
+                    document.getElementById("con").setCustomValidity('Please Confirm Password !');
+                } else {
+                    document.getElementById("con").setCustomValidity('');
+                }
+            }
+            var phone = document.getElementById("Phone");
+            phone.onchange = function () {
+                var p = document.getElementById("Phone");
+                if (p.value.length > 11 || isNaN(p.value)) {
+                    document.getElementById("Phone").setCustomValidity("Phone Must Be < 12 Number & No Chars");
+                } else {
+                    document.getElementById("Phone").setCustomValidity('');
+                }
+            }
+    </script>
+</body>
+</html>

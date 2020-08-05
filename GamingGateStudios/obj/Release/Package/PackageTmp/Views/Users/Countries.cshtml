@@ -1,0 +1,34 @@
+﻿@model IQueryable<IGrouping<string,GamingGateStudios.Models.User>>
+
+@{
+    ViewBag.Title = "Countries";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Users Countries</h2>
+<br/>
+<table class="table">
+    <tr>
+        <th>
+            Country
+        </th>
+        <th>
+            Num Of Users
+        </th>
+    </tr>
+
+@foreach (var item in Model.OrderByDescending(x=>x.Count())) {
+    <tr>
+        <td>
+            @item.Key
+        </td>
+        <td>
+            @item.Count()
+        </td>
+    </tr>
+}
+
+</table>
+
+<br />
+@Html.ActionLink("Back To List", "Index", "Users")

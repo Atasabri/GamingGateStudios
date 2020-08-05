@@ -1,0 +1,120 @@
+﻿@model IEnumerable<GamingGateStudios.Models.User>
+
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Users</h2>
+@{
+    if (Model.Count()!=0)
+    {
+
+        string country = Model.GroupBy(x => x.Country.ToLower()).Select(x => new { country = x.Key, num = x.Count() }).OrderByDescending(x => x.num).FirstOrDefault().country;
+        int age = Model.GroupBy(x => DateTime.Now.Year-x.DateOfBirth.Year).Select(x => new { age = x.Key, num = x.Count() }).OrderByDescending(x => x.num).FirstOrDefault().age;
+        int gender = Model.GroupBy(x => x.Gender).Select(x => new { gender = x.Key, num = x.Count() }).OrderByDescending(x => x.num).FirstOrDefault().gender.Value;
+        int faceusers = Model.Count(x => x.Face_ID != null && x.Active == true);
+        int normalusers = Model.Count(x => x.Face_ID == null&&x.Active==true);
+        double AllMoneyToken = Model.Select(x=>x.Money_Token.HasValue?x.Money_Token.Value:0).Aggregate((a, b) => a + b);
+        <h4>Best Country : @country @Html.ActionLink("Show", "Countries", "Users")</h4>
+        <h4>Best Age : @age @Html.ActionLink("Show", "Age", "Users")</h4>
+        if (gender == 1)
+        {
+            <h4>Best Gender : Male @Html.ActionLink("Show", "Gender", "Users")</h4>
+        }
+        else
+        {
+            <h4>Best Gender : Female @Html.ActionLink("Show", "Gender", "Users")</h4>
+        }
+        <h4>Facebook Users : @faceusers</h4>
+        <h4>Normal Users : @normalusers</h4>
+        <h4>Users Not Active (Register But Not Pay) : @Model.Where(x=>x.Active==false).Count()</h4>
+        <h4>Total Money Token : @AllMoneyToken $</h4>
+        <h4>Payment Method @Html.ActionLink("Show","PaymentMethod")</h4>
+    }
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<br/>
+<form action="~/Users/RestMoney" method="post">
+    @Html.AntiForgeryToken()
+    <input id="Submit1" type="submit" value="Rest Money Token" onclick="return confirm('Are You Sure You Want To Rest All Money Token For All Users ??')" />
+</form>
+<br/>
+<br/>
+
+<form action="~/Users/SendMail" method="post" enctype="multipart/form-data">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MemberShip.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                <input id="checkall" type="checkbox" />
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MemberShip.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    <input id="Checkbox1" type="checkbox" value="@item.Email" name="c" />
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <h3>The Mail Subject  : </h3> <input id="Text1" type="text" name="Subject" class="form-control" /><br />
+    <h3>The Mail Html File  : </h3> <input id="File1" type="file" name="file" /><br />
+    <br />
+    <input id="Submit1" type="submit" value="Send Mail To Selected Users" class="btn btn-default" />
+</form>
+<script>
+    var checkall = document.getElementById("checkall");
+    var myform = document.getElementsByName("c");
+    checkall.onclick = function () {
+        if (checkall.checked == true) {
+            for (var i = 0; i < document.getElementsByName("c").length; i++) {
+                myform[i].checked = true;
+            }
+        } else {
+            for (var i = 0; i < document.getElementsByName("c").length; i++) {
+                myform[i].checked = false;
+            }
+        }
+    }
+</script>

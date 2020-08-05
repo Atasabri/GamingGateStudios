@@ -1,0 +1,116 @@
+﻿@model   List<GamingGateStudios.Models.MemberShip>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MemeberShip</title>
+    <!--Custom Theme files-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Colorful Pricing Table Responsive, Login form web template,Flat Pricing tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login SignUp Responsive web template, SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //Custom Theme files -->
+    <link href="~/Content/Membership/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/Membership/flexslider.css" type="text/css" media="screen" />
+    <link href="~/Content/Membership/popup-box.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="~/Scripts/Membership/jquery-1.11.1.min.js"></script>
+    <!--web-fonts-->
+    <link href='//fonts.googleapis.com/css?family=Laila:300,400,500,600,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,500,100,100italic,300,300italic,500italic,700,700italic,900,900italic,400italic' rel='stylesheet' type='text/css'>
+    <!--//web-fonts-->
+    </head>
+    <body>
+        <!--main-->
+        <div class="main">
+            <h1>Choose Your MemberShip Or <a href="~/Home/Signin" style="color:red">Sign In</a></h1>
+            <div class="pricing-grids-info">
+                <section class="slider grid">
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <li>
+                                @foreach (var item in Model)
+                                {
+                                    <div class="pricing-grid grid-one" style="margin:10px">
+                                        <div class="w3ls-top" style="background-color:@item.color;">
+                                            <h3>@item.Name</h3>
+                                            <h4> @item.Price <span class="sup">$</span> </h4>
+                                            <div class="clear"> </div>
+                                        </div>
+                                        <div class="w3ls-bottom">
+                                            <ul class="count">
+                                                <li>
+                                                    <img src="~/Uploads/Member/@(item.ID).jpg" width="224" height="180" />
+                                                </li>
+                                            </ul>
+                                            <div class="more">
+                                                <a style="background-color:@item.color" class="book popup-with-zoom-anim button-isi zoomIn animated" data-wow-delay=".5s" href="~/Home/SignUp/@(item.ID)">Sign Up</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                <div class="clear"> </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <!--FlexSlider-->
+                <script src="~/Scripts/Membership/jquery.flexslider.js"></script>
+                <script type="text/javascript">
+				$(window).load(function(){
+				  $('.flexslider').flexslider({
+					animation: "pagination",
+					start: function(slider){
+					  $('body').removeClass('loading');
+					}
+				  });
+				});
+                </script>
+                <!--End-slider-script-->
+            </div>
+            @*<div class="pop-up">
+                <div id="small-dialog" class="mfp-hide book-form">
+                    <h2>Sign Up Form </h2>
+                    <form action="#" method="post">
+                        <input type="text" name="Name" placeholder="Your Name" required="" />
+                        <input type="text" name="Email" class="email" placeholder="Email" required="" />
+                        <input type="password" name="Password" class="password" placeholder="Password" required="" />
+                        <div class="check-box">
+                            <input name="chekbox" type="checkbox" id="brand" value="">
+                            <label for="brand"><span></span>Remember Me.</label>
+                        </div>
+                        <input type="submit" value="Sign Up">
+                    </form>
+                </div>
+                <!-- pop-up-box -->
+                <script src="~/Scripts/Membership/jquery.magnific-popup.js"></script>
+                <!--//pop-up-box -->
+                <script>
+				$(document).ready(function() {
+					$('.popup-with-zoom-anim').magnificPopup({
+						type: 'inline',
+						fixedContentPos: false,
+						fixedBgPos: true,
+						overflowY: 'auto',
+						closeBtnInside: true,
+						preloader: false,
+						midClick: true,
+						removalDelay: 300,
+						mainClass: 'my-mfp-zoom-in'
+					});
+				});
+                </script>
+            </div>*@
+
+        </div>
+        <!--//main-->
+        <!--copyright-->
+        <div class="copyright">
+            <p> &copy; @DateTime.Now.Year Gaming Gate Studios . All rights reserved | by <a href="http://www.mediagatestudios.com" target="_blank">Media Gate Studios.</a></p>
+        </div>
+        <!--//copyright-->
+    </body>
+</html>

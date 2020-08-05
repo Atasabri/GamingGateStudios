@@ -1,0 +1,68 @@
+﻿@model IEnumerable<GamingGateStudios.Models.GGBDeal>
+
+@{
+    ViewBag.Title = "Pricing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Pricing</h2>
+@{ 
+    double totalMoney = 0;
+    if (Model.Count()>0)
+    {
+        totalMoney = Model.Select(x => x.Price * x.Users_GGBDeals.Where(m => m.Active == true).Count()).Aggregate((a, b) => a + b);
+    }
+    <h4>Total Money : @totalMoney $</h4>
+}
+<h4>Payment Moethods @Html.ActionLink("Show","PaymentMethod")</h4>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GGB)
+        </th>
+        <th>
+            Number Of Buying
+        </th>
+        <th>
+            Total Money
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.OrderByDescending(x=>x.Users_GGBDeals.Where(m=>m.Active==true).Count())) {
+    int Buying = item.Users_GGBDeals.Where(x => x.Active == true).Count();
+    double Money = Buying * item.Price;
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GGB)
+        </td>
+        <td>
+            @Buying
+        </td>
+        <td>
+            @Money
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

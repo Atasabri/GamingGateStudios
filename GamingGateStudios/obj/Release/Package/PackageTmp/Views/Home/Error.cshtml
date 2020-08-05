@@ -1,0 +1,29 @@
+﻿@using GamingGateStudios.Models
+@{
+    ViewBag.Title = SiteResource.error;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@{
+    AD ad = DEL.GetAD(728, 90);
+    if (ad != null)
+    {
+        if (ad.Link != null)
+        {
+            <div style="margin-left:20%;margin-right:20%">
+                <a href="~/Home/ADClick/@ad.ID" target="_blank"><img src="~/Uploads/ADS/@(ad.ID).jpg" /></a>
+            </div>
+        }
+        else
+        {
+            <div style="margin-left:20%;margin-right:20%">
+                <img src="~/Uploads/ADS/@(ad.ID).jpg" />
+            </div>
+        }
+    }
+}
+<div class="gallery">
+    <div class="container">
+        <h3>@SiteResource.error</h3>
+        </div>
+</div>
+

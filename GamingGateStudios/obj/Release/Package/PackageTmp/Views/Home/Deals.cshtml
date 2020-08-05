@@ -1,0 +1,113 @@
+﻿@using GamingGateStudios.Models
+@model List<GamingGateStudios.Models.Deal>
+@{
+    ViewBag.Title = SiteResource.Shop;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@{
+    AD ad = DEL.GetAD(728, 90);
+    if (ad != null)
+    {
+        if (ad.Link != null)
+        {
+            <div style="margin-left:20%;margin-right:20%">
+                <a href="~/Home/ADClick/@ad.ID" target="_blank"><img src="~/Uploads/ADS/@(ad.ID).jpg" /></a>
+            </div>
+        }
+        else
+        {
+            <div style="margin-left:20%;margin-right:20%">
+                <img src="~/Uploads/ADS/@(ad.ID).jpg" />
+            </div>
+        }
+    }
+}
+<h3 class="tittle_agile_w3">@SiteResource.Shop</h3>
+<div class="heading-underline">
+    <div class="h-u1"></div><div class="h-u2"></div><div class="h-u3"></div><div class="clearfix"></div>
+</div>
+<!-- Games Page Starts here -->
+<div class="games">
+    <div class="container">
+        <div class="page-path">
+            <ul class="path-list">
+                <li><a href="index.html"></a></li>
+                <li class="act"></li>
+            </ul>
+            <p><a href="index.html"></a></p>
+            <div class="clearfix"></div>
+        </div>
+        @{ 
+            int member = (Session["AUTH"] as AuthUser).Member_ID;
+        }
+        <div class="blog-content">
+            @foreach (var item in Model)
+            {
+                <div class="blog-post">
+                    @if (Request.Cookies["Language"] != null)
+                    {
+                        if (Request.Cookies["Language"].Value == "ar")
+                        {
+                            <a href="~/Home/Deal/@item.ID"> <h3>@item.Name_AR</h3></a>
+                        }
+                        else
+                        {
+                           <a href="~/Home/Deal/@item.ID"> <h3>@item.Name</h3></a>
+                        }
+                    }
+                    else
+                    {
+                        <a href="~/Home/Deal/@item.ID"> <h3>@item.Name</h3></a>
+                    }
+                            <div class="post-details">
+                                <p>GGP <span> @item.Deal_Member.Single(x => x.Member_ID == member).GGB </span></p>
+                            </div>
+                            <a href="~/Home/Deal/@item.ID"><img src="~/Uploads/Deals/@(item.ID).jpg" alt=""></a>
+                            <nav class="cl-effect-3"><a href="~/Home/Deal/@item.ID">Buy</a></nav>
+                      </div>
+            }
+        </div>
+        <div class="blog-sidebar">
+            <h3 class="page-header">@GamingGateStudios.SiteResource.NewGames</h3>
+            <ul class="product-categories color">
+                @if (Request.Cookies["Language"] != null)
+                {
+                    if (Request.Cookies["Language"].Value == "ar")
+                    {
+                        foreach (var item in new DB().Games.Select(x => new { id = x.ID, name = x.Name_AR, num = x.Gamers.Count }).OrderByDescending(x => x.id).Take(15))
+                        {
+                            <li class="cat-item cat-item-42"><a href="~/Home/Game/@item.id">@item.name</a> <span class="count">@item.num</span></li>
+                        }
+                    }
+                    else
+                    {
+                        foreach (var item in new DB().Games.Select(x => new { id = x.ID, name = x.Name, num = x.Gamers.Count }).OrderByDescending(x => x.id).Take(15))
+                        {
+                            <li class="cat-item cat-item-42"><a href="~/Home/Game/@item.id">@item.name</a> <span class="count">@item.num</span></li>
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (var item in new DB().Games.Select(x => new { id = x.ID, name = x.Name, num = x.Gamers.Count }).OrderByDescending(x => x.id).Take(15))
+                    {
+                        <li class="cat-item cat-item-42"><a href="~/Home/Game/@item.id">@item.name</a> <span class="count">@item.num</span></li>
+                    }
+                }
+            </ul>
+            <h3 class="page-header">@SiteResource.Subscribe</h3>
+            <div class="subscribe">
+                <h4>@SiteResource.Subscribe</h4>
+                <form action="~/Home/Subscribe" method="post">
+                    <input type="text" name="Email" placeholder="@SiteResource.Email" required="" />
+                    <input type="submit" value="@SiteResource.Subscribe" />
+                </form>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+    </div>
+</div>
+<!-- What New Part Endss Here -->
+
+

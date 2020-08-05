@@ -1,0 +1,382 @@
+﻿@using GamingGateStudios.Models
+@model GamingGateStudios.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SignUp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Dragging register form Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+    <!-- custom css file -->
+    <link href="~/Content/SignUp/css/style.css" rel="stylesheet" />
+    <!-- //custom css file -->
+    <!-- google fonts -->
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300italic,300,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- //google fonts -->
+    <style>
+        /* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 1.95em;
+  cursor: pointer;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 1.25em; height: 1.25em;
+  border: 2px solid #ccc;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+}
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: '✔';
+  position: absolute;
+  top: .1em; left: .3em;
+  font-size: 1.3em;
+  line-height: 0.8;
+  color: #09ad7e;
+  transition: all .2s;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #ddd;
+}
+[type="checkbox"]:disabled:checked + label:after {
+  color: #999;
+}
+[type="checkbox"]:disabled + label {
+  color: #aaa;
+}
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {
+  border: 2px dotted blue;
+}
+
+/* hover style just for information */
+label:hover:before {
+  border: 2px solid #4778d9!important;
+}
+
+
+
+
+
+
+/* Useless styles, just for demo design */
+
+.copy {
+ margin-top: 2em; 
+}
+.copy a {
+ text-decoration: none;
+ color: #4778d9;
+}
+    </style>
+
+</head>
+<body>
+    <h1>Gaming Gate Studios</h1>
+    @{ 
+        string color = new DB().MemberShips.Find(ViewData["Member_ID"]).color;
+        string Member = new DB().MemberShips.Find(ViewData["Member_ID"]).Name;
+        double Price = 0;
+        if (new DB().MemberShips.Find(ViewData["Member_ID"]).Price.HasValue)
+        {
+            if(new DB().MemberShips.Find(ViewData["Member_ID"]).Price.Value!=0)
+            {
+                Price = new DB().MemberShips.Find(ViewData["Member_ID"]).Price.Value;
+            }
+        }
+    }
+    <div class="agile-its"style="background-color:@color">
+        <h2>Register As @Member User</h2>
+        <div class="w3layouts">
+            <div class="photos-upload-view">
+                    <form action="~/Home/SignUp" method="post" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
+                        <div class="agileinfo">
+                            @if (Model.Face_ID == null)
+                            {
+                                <input type="file" required="Required" id="fileselect" name="photo" />
+                                <div id="filedrag">Choose Your Picture</div>
+                            }
+                            else
+                            {
+                                <input type="hidden" id="Face_ID" name="Face_ID" value="@Model.Face_ID" />
+                                <img src="https://graph.facebook.com/@Model.Face_ID/picture" alt="" width="60" height="60" style="border-radius:50%" />
+                            }
+
+                        </div>
+                        <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+                        <input type="hidden" id="mem" name="Member_ID" value="@ViewData["Member_ID"]" />
+                        <div class="agileinfo-row">
+                            <div class="ferry ferry-from">
+                                <label>User Name</label>
+                                <input type="text" name="name" placeholder="Name" value="@Model.Name" required="Required">
+                            </div>
+                            <div class="ferry ferry-from">
+                                <label>Your Email</label>
+                                <input type="email" name="email" placeholder="Email" value="@Model.Email" required="Required">
+                            </div>
+                            <div class="ferry ferry-from">
+                                <label>Password</label>
+                                <input type="password" id="pass" name="password" value="@Model.Password" placeholder="Password" required="Required">
+                            </div>
+                            <div class="ferry ferry-from">
+                                <label>Confirm Password</label>
+                                <input type="password" id="con" name="passwor" value="@Model.Password" placeholder="Password" required="Required">
+                            </div>
+                            <div class="ferry ferry-from">
+                                <label>Your Phone</label>
+                                <input type="text" id="phone" name="phone" value="@Model.Phone" placeholder="Phone" required="Required">
+                            </div>
+                            <div class="ferry ferry-from">
+                                <label>Your Country</label>
+                                <input type="text" name="country" placeholder="Country" value="@Model.Country" required="Required">
+                            </div>
+                            <div class="w3_agileits_main_grid_left_l">
+                                <h3>Gender</h3>
+                            </div>
+                            <div class="w3_agileits_main_grid_left_r">
+                                @if (Model.Gender == 1||Model.Gender==null)
+                                {
+                                    <div class="agileinfo_radio_button">
+                                        <label class="radio"><input type="radio" name="Gender" value="1" checked=""><i></i>Male</label>
+                                    </div>
+                                    <div class="agileinfo_radio_button">
+                                        <label class="radio"><input type="radio" name="Gender" value="0"><i></i>Female</label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="agileinfo_radio_button">
+                                        <label class="radio"><input type="radio" name="Gender" value="1"><i></i>Male</label>
+                                    </div>
+                                    <div class="agileinfo_radio_button">
+                                        <label class="radio"><input type="radio" name="Gender" value="0" checked=""><i></i>Female</label>
+                                    </div>
+                                }
+
+                                <div class="clear"> </div>
+                            </div>
+                            <label>Date Of Birth</label>
+                            <div class="form_box">
+                                <div class="select-block1">
+                                    <select required="Required" name="month">
+                                        <option value="1" id="1">January</option>
+                                        <option value="2" id="2">February</option>
+                                        <option value="3" id="3">March</option>
+                                        <option value="4" id="4">April</option>
+                                        <option value="5" id="5">May</option>
+                                        <option value="6" id="6">June</option>
+                                        <option value="7" id="7">July</option>
+                                        <option value="8" id="8">August</option>
+                                        <option value="9" id="9">September</option>
+                                        <option value="10" id="10">October</option>
+                                        <option value="11" id="11">November</option>
+                                        <option value="12" id="12">December</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form_box">
+                                <div class="select-block1 middle">
+                                    <select required="Required" name="day">
+                                        @for (int i = 1; i <= 31; i++)
+                                        {
+                                            if (Model.DateOfBirth.Day == i)
+                                            {
+                                             <option value="@i" selected>@i</option>
+                                            }
+                                             else
+                                            {
+                                               <option value="@i">@i</option>
+                                            }
+                                        }
+               
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form_box1">
+                                <div class="select-block1 last">
+                                    <select required="Required" name="year">
+                                        @for (int i = 1982; i <= DateTime.Now.Year - 10; i++)
+                                        {
+                                                if (Model.DateOfBirth.Year == i)
+                                                {
+                                                    <option value="@i" selected>@i</option>
+                                                }
+                                            else
+                                            {
+                                                    <option value="@i">@i</option>
+                                             }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            @if (Price != 0)
+                            {
+                                <div>
+                                    <label>Payment With :</label>
+                                    <p>
+                                        <input type="checkbox" value="1" id="test1" name="Pay" />
+                                        <label for="test1"><img src="~/images/Payment/payza.png" width="60" height="30" /></label>
+                                        <input type="checkbox" value="2" id="test2" name="Pay" />
+                                        <label for="test2"><img src="~/images/Payment/paytab.png" width="60" height="30" /></label>
+                                    </p>
+                                </div>
+                            }
+                        </div>
+                        <div class="wthree-text">
+                            <label class="anim">
+                                <span>Will Send latest updates</span>
+                            </label>
+                            <div class="wthreesubmitaits">
+                                <input type="submit" name="submit" value="Register">
+                            </div>
+
+                            <div class="clear"> </div>
+                        </div>
+                        <div id="DIV">
+                            @if (ViewBag.error != null)
+                            {
+                                <div id="messages">
+                                    <h4>@ViewBag.error</h4>
+                                </div>
+                            }
+                        </div>
+                    </form>
+            </div>
+            <div class="clear"></div>
+            <div class="social">
+                <div id="fb-root"></div>
+                @if (Model.Face_ID == null)
+                {
+                    <a href="#" onclick="loginByFacebook();" class="f"><span></span>Sign Up With Facebook </a>
+                }
+                <div class="clear"> </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; @DateTime.Now.Year Gaming Gate Studios. All rights reserved | by <a href="http://www.mediagatestudios.com">Media Gate Studios</a></p>
+    </div>
+    <script type="text/javascript">
+        window.fbAsyncInit = function () {
+            FB.init({appId:'@System.Configuration.ConfigurationManager.AppSettings["FaceID"].ToString()',
+                status: true, // check login status
+                cookie: true, // enable cookies to allow the server to access the session
+                xfbml: true, // parse XFBML
+                oauth: true // enable OAuth 2.0
+            });
+        };
+        (function () {
+            var e = document.createElement('script'); e.async = true;
+            e.src = document.location.protocol +
+            '//connect.facebook.net/en_US/all.js';
+            document.getElementById('fb-root').appendChild(e);
+        }());
+
+        function loginByFacebook() {
+            FB.login(function (response) {
+                if (response.authResponse) {
+                    FacebookLoggedIn(response);
+                } else {
+                    console.log('User cancelled login or did not fully authorize.');
+                }
+            }, { scope: 'user_birthday,user_about_me,user_hometown,user_location,email' });
+        }
+
+        function FacebookLoggedIn(response) {
+            var loc = '@ViewData["Member_ID"]';
+            if (loc.indexOf('?') > -1)
+                window.location = loc + '&authprv=facebook&access_token=' + response.authResponse.accessToken;
+            else
+                window.location = loc + '?authprv=facebook&access_token=' + response.authResponse.accessToken;
+        }
+    </script>
+    <script>
+             var x = document.getElementById(@Model.DateOfBirth.Month.ToString());
+             x.selected = true;        
+    </script>
+    <script>
+        var confirm = document.getElementById("con");
+        confirm.onchange = function () {
+            var pass = document.getElementById("pass");
+            if(confirm.value!=pass.value)
+            {
+                document.getElementById("con").setCustomValidity('Please Confirm Password !');
+            } else {
+                document.getElementById("con").setCustomValidity('');
+            }
+        }
+        var phone = document.getElementById("phone");
+        phone.onchange = function () {
+            var p = document.getElementById("phone");
+            if (p.value.length > 11 || isNaN(p.value)) {
+                document.getElementById("phone").setCustomValidity("Phone Must Be < 12 Number & No Chars");
+            } else {
+                document.getElementById("phone").setCustomValidity('');
+            }
+        }
+        
+    </script>
+    <script>
+        var PayZa = document.getElementById("test1");
+        PayZa.checked = true;
+        var PayTab = document.getElementById("test2");
+        PayZa.onclick=function()
+        {
+            PayTab.checked = false;
+        }
+        PayTab.onclick=function()
+        {
+            PayZa.checked = false;
+        }
+    </script>
+    <!-- js files -->
+    <script src="~/Scripts/SignUp/filedrag.js"></script>
+    <script src="~/Scripts/SignUp/jquery.min.js"></script>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.intellisense.js"></script>
+</body>
+</html>

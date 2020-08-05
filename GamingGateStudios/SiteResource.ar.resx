@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Country" xml:space="preserve">
+    <value>الدولة</value>
+  </data>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>تاريخ الميلاد الهجرى</value>
+  </data>
+  <data name="EditYourProfile" xml:space="preserve">
+    <value>تعديل ملفك الشخصى</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>البريد الالكترونى</value>
+  </data>
+  <data name="FName" xml:space="preserve">
+    <value>الاسم الاول</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>النوع</value>
+  </data>
+  <data name="hello" xml:space="preserve">
+    <value>مرحبا </value>
+  </data>
+  <data name="Homedescription1" xml:space="preserve">
+    <value>شوري من القرن التاسع قبل الميلاد، وحسب نظرية أكثرية الباحثين فإنه يعني أهل البادية، في اللغة الآشورية وعدد من اللغات السامية الأخرى.[20] البادية المقصودة هي بادية الشام في جنوب الهلال الخصيب وامتدادها، لتشمل اللفظة شبه الجزيرة العربية برمتها، والتي دعيت منذ الحقبة الإغريقية باسم العربية (باللاتينية: Arabia)، بمعنى بلاد العرب.[21] النظرية البديلة تقول أن العرب اسم علم للشعب في البدو والحضر لا مضارب القبائل فحسب،[22][23][24][25] بكل الأحوال فإن أقدم مملكة عربية حضرية غير مرتحلة هي مملكة لحيان في القرن الرابع قبل الميلاد وايضا مملكة كندة في القرن الثاني قبل الميلاد؛ مع الإشارة لكون حضارة اليمن القديم، الزراعية وغير المرتحلة أ</value>
+  </data>
+  <data name="Homedescription2" xml:space="preserve">
+    <value>درج المؤرخون العرب حتى الأيام الراهنة بقسمة تاريخ العرب إلى قسمين، قبل الإسلام والمدعو جاهلية، وبعد الإسلام الذي تمكن فيه العرب من سيادة إمبراطورية واسعة ومزدهرة حضاريًا، خصوصًا في العهد الأموي - سواءً في دمشق أم الأندلس - والعهد العباسي - خصوصًا العهد العباسي الأول وحاضرته بغداد - هذه السيادة أفرزت أنماطًا حضارية غنية، وتمازجت مع الشعوب الأخرى المعتنقة للإسلام، وانتشر الاستعراب في عدة أقاليم أهمها الهلال الخصيب، وشمال ووسط وادي النيل، والمغرب العربي، والأهواز، وبشكل أقل سواحل القرن الأفريقي، وتعرف هذه الأقاليم باسم الوطن العربي، ويعود لمرحلة النهضة العربية في القرن التاسع عشر، بروز ملامح الهوية العربية المعاصرة.</value>
+  </data>
+  <data name="LName" xml:space="preserve">
+    <value>الاسم الاخير</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>رسالتك</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>المزيد</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="NewGames" xml:space="preserve">
+    <value>الالعاب الجديدة</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>كلمة المرور</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>الهاتف</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>الصورة</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="YourProfile" xml:space="preserve">
+    <value>ملفك الشخصى</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>تأكيد كلمة المرور</value>
+  </data>
+  <data name="ErrorSaved" xml:space="preserve">
+    <value>خطأ فى حفظ البيانات و من فضلك تاكد من البيانات !!</value>
+  </data>
+  <data name="ImageError" xml:space="preserve">
+    <value>من فضلك امتداد الصورة يجب ان يكون (.jpg , .png , .bmp , .gif)</value>
+  </data>
+  <data name="Saved" xml:space="preserve">
+    <value>تم تعديل بياناتك بنجاح شكرا لك</value>
+  </data>
+  <data name="VaildEmail" xml:space="preserve">
+    <value>من فضلك ادخل بريد اليكترونى صحيح !!</value>
+  </data>
+  <data name="emailused" xml:space="preserve">
+    <value>البريد الالكترونى او كلمة المرور مستخدمين بالفعل !!</value>
+  </data>
+  <data name="Subscribe" xml:space="preserve">
+    <value>اشتراك</value>
+  </data>
+  <data name="bestgames" xml:space="preserve">
+    <value>افضل الالعاب</value>
+  </data>
+  <data name="Oldgames" xml:space="preserve">
+    <value>الالعاب القديمة</value>
+  </data>
+  <data name="Games" xml:space="preserve">
+    <value>الالعاب</value>
+  </data>
+  <data name="Playnow" xml:space="preserve">
+    <value>العب الان</value>
+  </data>
+  <data name="RedeemingPoints" xml:space="preserve">
+    <value>تحويل نقاط</value>
+  </data>
+  <data name="redeem" xml:space="preserve">
+    <value>تحويل</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>النقاط</value>
+  </data>
+  <data name="winners" xml:space="preserve">
+    <value>الفائزون</value>
+  </data>
+  <data name="gallery" xml:space="preserve">
+    <value>معرض الصور</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>خطأ </value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>السعر</value>
+  </data>
+  <data name="Shop" xml:space="preserve">
+    <value>المتجر</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>عن الموقع</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>تواصل معنا</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>الرئيسية</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>رقم مرور (ستستخدم هذا الرقم فى اللعبة)</value>
+  </data>
+  <data name="GPassword" xml:space="preserve">
+    <value>كلمة المرور فى اللعبة</value>
+  </data>
+  <data name="GPhone" xml:space="preserve">
+    <value>رقم المحمول فى اللعبة</value>
+  </data>
+  <data name="Pay" xml:space="preserve">
+    <value>ادفع</value>
+  </data>
+  <data name="errorcode" xml:space="preserve">
+    <value>رقم المرور مستخدم</value>
+  </data>
+  <data name="errorgame" xml:space="preserve">
+    <value>رقم الهاتف وكلمة المرور التى ادخلتها لا توجد فى هذه اللعبة</value>
+  </data>
+  <data name="errorgamer" xml:space="preserve">
+    <value>رقم الهاتف وكلمة المرور غير صحيحان</value>
+  </data>
+  <data name="errorPay" xml:space="preserve">
+    <value>خطأ فى العملية</value>
+  </data>
+  <data name="GameData" xml:space="preserve">
+    <value>بيانات اللعبة</value>
+  </data>
+  <data name="prizedone" xml:space="preserve">
+    <value>شكرا لك سنقوم بارسال الجائزة اليك</value>
+  </data>
+  <data name="Prizeerror" xml:space="preserve">
+    <value>من فضلك تاكد من رقم المحمول وكلمة المرور الخاصة باللعبة</value>
+  </data>
+  <data name="prizeserrorpoints" xml:space="preserve">
+    <value>للاسف نقاطك اصغر من المطلوب</value>
+  </data>
+  <data name="redeemerror" xml:space="preserve">
+    <value>خطأ فى التحويل</value>
+  </data>
+  <data name="Buy" xml:space="preserve">
+    <value>اشترى</value>
+  </data>
+  <data name="DealDone" xml:space="preserve">
+    <value>لقد اشتريت هذا المنتج اذهب الى اللعبة لتستخدمه</value>
+  </data>
+  <data name="DealError" xml:space="preserve">
+    <value>رصيدك غير كافية لشراء هذا المنتج</value>
+  </data>
+  <data name="MoneytokenError" xml:space="preserve">
+    <value>لاسف المال الذى حصل عليه اكبر من اللازم</value>
+  </data>
+  <data name="Pricing" xml:space="preserve">
+    <value>اسعار GGP</value>
+  </data>
+  <data name="Balance" xml:space="preserve">
+    <value>الرصيد</value>
+  </data>
+  <data name="Charge" xml:space="preserve">
+    <value>اشحن</value>
+  </data>
+</root>

@@ -1,0 +1,38 @@
+﻿@model IQueryable<IGrouping<int,GamingGateStudios.Models.Gamer>>
+@{
+    ViewBag.Title = "Age";
+    Layout = "~/Areas/Operators/Views/Shared/_Layout.cshtml";
+}
+
+<div style="width:90%; margin:0 auto;">
+    <h2>Age</h2>
+    <div class="graph">
+        <div class="tables" style="align-items:center">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr style="align-items:center">
+                        <th>#</th>
+                        <th>Age</th>
+                        <th>Number Of Gamers</th>
+                    </tr>
+                </thead>
+                <tbody style="align-items:center">
+                    @{
+                        int counter = 0;
+                    }
+                    @foreach (var item in Model.OrderByDescending(x=>x.Count()))
+                    {
+                        counter++;
+                        <tr>
+                            <th scope="row">@counter</th>
+                            <td>@item.Key</td>
+                            <td>@item.Count()</td>                          
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,150 @@
+﻿@using GamingGateStudios.Models
+@model List<GamingGateStudios.Models.Winner>
+
+@{
+    ViewBag.Title = SiteResource.winners;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@{
+    AD ad = DEL.GetAD(728, 90);
+    if (ad != null)
+    {
+        if (ad.Link != null)
+        {
+            <div style="margin-left:20%;margin-right:20%">
+                <a href="~/Home/ADClick/@ad.ID" target="_blank"><img src="~/Uploads/ADS/@(ad.ID).jpg" /></a>
+            </div>
+        }
+        else
+        {
+            <div style="margin-left:20%;margin-right:20%">
+                <img src="~/Uploads/ADS/@(ad.ID).jpg" />
+            </div>
+        }
+    }
+}
+        <div class="services">
+            <div class="container">
+                <h3 class="tittle_agile_w3">@SiteResource.winners</h3>
+                <div class="heading-underline">
+                    <div class="h-u1"></div><div class="h-u2"></div><div class="h-u3"></div><div class="clearfix"></div>
+                </div>
+                <div class="w3_services_grids">
+                    @if (Request.Cookies["Language"] != null)
+            {
+                if (Request.Cookies["Language"].Value == "ar")
+                {
+                    foreach (var item in Model)
+                    {
+                                <div class="col-md-3 w3ls_team_grid">
+                                    <div class="w3ls_team_grid1 hover15">
+                                        <figure>
+                                            @if (item.User.Face_ID != null)
+                                            {
+                                                <img src="https://graph.facebook.com/@item.User.Face_ID/picture" alt="" style="border-radius:90%;width:250px;height:250px" class="img-responsive" />
+                                            }
+                                            else
+                                            {
+                                                <img src="~/Uploads/Users/@(item.User_ID).jpg" alt="" style="border-radius:90%;width:250px;height:250px" class="img-responsive" />
+                                            }
+                                        </figure>
+                                    </div>
+                                    <br />
+                                    <h4 style="text-align:center">@item.User.Name</h4>
+                                    <p style="text-align:center"><a href="~/Home/Prize/@item.Prize_ID">@item.Prize.Name_AR</a> </p>
+                                    <p style="text-align:center"><a href="~/Home/Game/@item.Gamer.Game_ID">@item.Gamer.Game.Name_AR</a></p>
+                                </div>
+
+                            }
+                        }
+                        else
+                        {
+                            foreach (var item in Model)
+                            {
+                                <div class="col-md-3 w3ls_team_grid">
+                                    <div class="w3ls_team_grid1 hover15">
+                                        <figure>
+                                            @if (item.User.Face_ID != null)
+                                            {
+                                                <img src="https://graph.facebook.com/@item.User.Face_ID/picture" alt="" style="border-radius:90%;width:250px;height:250px" class="img-responsive" />
+                                            }
+                                            else
+                                            {
+                                                <img src="~/Uploads/Users/@(item.User_ID).jpg" alt="" style="border-radius:90%;width:250px;height:250px" class="img-responsive" />
+                                            }
+                                        </figure>
+                                    </div>
+                                    <br />
+                                    <h4 style="text-align:center">@item.User.Name</h4>
+                                    <p style="text-align:center"><a href="~/Home/Prize/@item.Prize_ID">@item.Prize.Name</a> </p>
+                                    <p style="text-align:center"><a href="~/Home/Game/@item.Gamer.Game_ID">@item.Gamer.Game.Name</a></p>
+                                </div>
+
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (var item in Model)
+                        {
+                            <div class="col-md-3 w3ls_team_grid">
+                                <div class="w3ls_team_grid1 hover15">
+                                    <figure>
+                                        @if (item.User.Face_ID != null)
+                                        {
+                                            <img src="https://graph.facebook.com/@item.User.Face_ID/picture" alt="" style="border-radius:90%;width:250px;height:250px" class="img-responsive" />
+                                        }
+                                        else
+                                        {
+                                            <img src="~/Uploads/Users/@(item.User_ID).jpg" alt="" style="border-radius:90%;width:250px;height:250px" class="img-responsive" />
+                                        }
+                                    </figure>
+                                </div>
+                                <br />
+                                <h4 style="text-align:center">@item.User.Name</h4>
+                                <p style="text-align:center"><a href="~/Home/Prize/@item.Prize_ID">@item.Prize.Name</a> </p>
+                                <p style="text-align:center"><a href="~/Home/Game/@item.Gamer.Game_ID">@item.Gamer.Game.Name</a></p>
+                            </div>
+
+                        }
+                    }
+
+
+
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            .w3ls_event_grids, .w3_services_grids {
+                margin: 2em 0 0;
+            }
+
+            .col-md-3 {
+                position: relative;
+                min-height: 1px;
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+
+            .w3ls_team_grid h4 {
+                font-size: .9em;
+                letter-spacing: 0;
+            }
+
+            .w3ls_team_grid p {
+                color: #13b3bb;
+            }
+
+            h4 {
+                font-family: 'Raleway', sans-serif;
+                margin: 0;
+                font-weight: 700;
+            }
+
+            p {
+                margin: 0;
+                font-size: 1em;
+                letter-spacing: 1px;
+            }
+        </style>

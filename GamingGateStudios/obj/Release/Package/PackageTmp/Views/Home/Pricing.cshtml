@@ -1,0 +1,49 @@
+﻿@model List<GamingGateStudios.Models.GGBDeal>
+@{
+    ViewBag.Title = SiteResource.Pricing;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link href="~/Content/Pricing/style.css" rel="stylesheet" />
+<h3 class="tittle_agile_w3">@SiteResource.Pricing</h3>
+<div class="heading-underline">
+    <div class="h-u1"></div><div class="h-u2"></div><div class="h-u3"></div><div class="clearfix"></div>
+</div>
+<div class="main">
+    <div class="pricing-table">
+        @foreach (var item in Model)
+        {
+            <div class="pricing">
+                <div class="price-top">
+                    <h2>@item.Name</h2>
+                </div>
+                <div class="price-bottom">
+                    <div class="price1">
+                        <div class="dotter">
+                            <h3>$@item.Price</h3>
+                        </div>
+                        <div class="dotter">
+                            <h3>GGP @item.GGB</h3>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="price2">
+                        @using (Html.BeginForm("Pay", "Home", new { GGBDeal_ID = item.ID, Pay = 1 }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input id="Submit1" type="submit" value="" style="background-image:url(../../images/Payment/payza.png);width:60px;height:60px" class="button" />
+                        }
+                        @using (Html.BeginForm("Pay", "Home", new { GGBDeal_ID = item.ID, Pay = 2 }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input id="Submit1" type="submit" value="" style="background-image:url(../../images/Payment/paytab.png);width:60px;height:60px" class="button" />
+                        }
+                    </div>
+                </div>
+            </div>
+
+        }
+
+        <div class="clear"></div>
+    </div>
+    <br /><br /><br />
+</div>	

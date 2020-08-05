@@ -1,0 +1,61 @@
+﻿@model List<GamingGateStudios.Models.Gamer>
+
+@{
+    ViewBag.Title = "Active";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Count Active Gamers</h2>
+<table class="table">
+    <tr>
+        <th>
+            Phone
+        </th>
+        <th>
+            User Name
+        </th>
+        <th>
+            Member
+        </th>
+        <th>
+            Country
+        </th>
+        <th>
+            Points
+        </th>
+        <th>
+           Tries
+        </th>
+        <th>
+            Game Name
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Member)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Points)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tries)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Game.Name)
+        </td>
+    </tr>
+}
+
+</table>

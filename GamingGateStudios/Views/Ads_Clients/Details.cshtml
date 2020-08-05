@@ -1,0 +1,110 @@
+﻿@model GamingGateStudios.Models.Ads_Clients
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name Details</h2>
+
+<div>
+    <h4>Ads Client Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Target_CPM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Target_CPM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            Num Of ADS
+        </dt>
+        <dd>
+            @Model.ADS.Count
+        </dd>
+        <dt>
+            Actual CPM
+        </dt>
+        <dd>
+            @{
+                int Actual_CPM = Model.ADS.Select(x => x.CPM).Aggregate((a, b) => a + b);
+            }
+            @Actual_CPM
+        </dd>
+        <dt>
+            Photo
+        </dt>
+
+        <dd>
+            <img src="~/Uploads/AdsClients/@(Model.ID).jpg" alt="" width="500" height="300" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<br />
+<h2>Advertisment</h2>
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>CPM</th>
+            <th>
+                Photo
+            </th>
+        </tr>
+        @foreach (var item in Model.ADS)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>@item.CPM</td>
+                <td>
+                    <img src="~/Uploads/ADS/@(item.ID).jpg" alt="" width="50" height="50" />
+                </td>
+                <td>
+                    @Html.ActionLink("ADS Details", "Details", "ADS", new { @id = item.ID }, null)
+                </td>
+            </tr>
+        }
+    </table>
+</div>

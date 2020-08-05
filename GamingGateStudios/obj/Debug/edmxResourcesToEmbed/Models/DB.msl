@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GamingGateStudiosModelStoreContainer" CdmEntityContainer="DB">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Admin">
+        <MappingFragment StoreEntitySet="Admins">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Admin_Type" ColumnName="Admin_Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ADS">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.AD">
+        <MappingFragment StoreEntitySet="ADS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+          <ScalarProperty Name="Enable" ColumnName="Enable" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="CPM" ColumnName="CPM" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="Click" ColumnName="Click" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ads_Clients">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Ads_Clients">
+        <MappingFragment StoreEntitySet="Ads_Clients">
+          <ScalarProperty Name="Agency_ID" ColumnName="Agency_ID" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Target_CPM" ColumnName="Target_CPM" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Channels">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Channel">
+        <MappingFragment StoreEntitySet="Channels">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Contact">
+        <MappingFragment StoreEntitySet="Contacts">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Deal_Gamers">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Deal_Gamers">
+        <MappingFragment StoreEntitySet="Deal_Gamers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Gamer_ID" ColumnName="Gamer_ID" />
+          <ScalarProperty Name="Deal_ID" ColumnName="Deal_ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Deal_Member">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Deal_Member">
+        <MappingFragment StoreEntitySet="Deal_Member">
+          <ScalarProperty Name="GGB" ColumnName="GGB" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Deal_ID" ColumnName="Deal_ID" />
+          <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Deals">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Deal">
+        <MappingFragment StoreEntitySet="Deals">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Name_AR" ColumnName="Name-AR" />
+          <ScalarProperty Name="Game_ID" ColumnName="Game_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gamers">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Gamer">
+        <MappingFragment StoreEntitySet="Gamers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Member" ColumnName="Member" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+          <ScalarProperty Name="Tries" ColumnName="Tries" />
+          <ScalarProperty Name="Mony_Send" ColumnName="Mony_Send" />
+          <ScalarProperty Name="Money_Token" ColumnName="Money_Token" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Game_ID" ColumnName="Game_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Game">
+        <MappingFragment StoreEntitySet="Games">
+          <ScalarProperty Name="Start_Points" ColumnName="Start_Points" />
+          <ScalarProperty Name="Start_Tries" ColumnName="Start_Tries" />
+          <ScalarProperty Name="Watch" ColumnName="Watch" />
+          <ScalarProperty Name="Trailer" ColumnName="Trailer" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Name_AR" ColumnName="Name-AR" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Description_AR" ColumnName="Description-AR" />
+          <ScalarProperty Name="Android_URL" ColumnName="Android_URL" />
+          <ScalarProperty Name="Ituens_URL" ColumnName="Ituens_URL" />
+          <ScalarProperty Name="Windows_URL" ColumnName="Windows_URL" />
+          <ScalarProperty Name="Facebook_URL" ColumnName="Facebook_URL" />
+          <ScalarProperty Name="KindleFire_URL" ColumnName="KindleFire_URL" />
+          <ScalarProperty Name="EB_URL" ColumnName="EB_URL" />
+          <ScalarProperty Name="Game_Link" ColumnName="Game_Link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberShips">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.MemberShip">
+        <MappingFragment StoreEntitySet="MemberShip">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Limit_Token_Money" ColumnName="Limit_Token_Money" />
+          <ScalarProperty Name="color" ColumnName="color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Operators">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Operator">
+        <MappingFragment StoreEntitySet="Operators">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Portfolios">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Portfolio">
+        <MappingFragment StoreEntitySet="Portfolio">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prizes">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Prize">
+        <MappingFragment StoreEntitySet="Prizes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Name_AR" ColumnName="Name-AR" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Third_Partner" ColumnName="Third_Partner" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Splashes">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Splash">
+        <MappingFragment StoreEntitySet="Splashes">
+          <ScalarProperty Name="Game_ID" ColumnName="Game_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Channel_ID" ColumnName="Channel_ID" />
+          <ScalarProperty Name="Enable" ColumnName="Enable" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subscribers">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Subscriber">
+        <MappingFragment StoreEntitySet="Subscribers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Third_Partner">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Third_Partner">
+        <MappingFragment StoreEntitySet="Third_Partner">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Pay" ColumnName="Pay" />
+          <ScalarProperty Name="GGB" ColumnName="GGB" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Face_ID" ColumnName="Face_ID" />
+          <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+          <ScalarProperty Name="Money_Token" ColumnName="Money_Token" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Winners">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Winner">
+        <MappingFragment StoreEntitySet="Winners">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Prize_ID" ColumnName="Prize_ID" />
+          <ScalarProperty Name="Gamer_ID" ColumnName="Gamer_ID" />
+          <ScalarProperty Name="Received" ColumnName="Received" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Rest_Users" FunctionName="GamingGateStudiosModel.Store.Rest_Users" />
+    <FunctionImportMapping FunctionImportName="GameWatch" FunctionName="GamingGateStudiosModel.Store.GameWatch" />
+    <FunctionImportMapping FunctionImportName="ADClick" FunctionName="GamingGateStudiosModel.Store.ADClick" />
+    <FunctionImportMapping FunctionImportName="ADWatch" FunctionName="GamingGateStudiosModel.Store.ADWatch" />
+    <EntitySetMapping Name="Agencies">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Agency">
+        <MappingFragment StoreEntitySet="Agencies">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Target_CPM" ColumnName="Target_CPM" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Category">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GGBDeals">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.GGBDeal">
+        <MappingFragment StoreEntitySet="GGBDeals">
+          <ScalarProperty Name="GGB" ColumnName="GGB" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.News">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="watch" ColumnName="watch" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Head" ColumnName="Head" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Pay_Code" ColumnName="Pay_Code" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Programs">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Program">
+        <MappingFragment StoreEntitySet="Programs">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Tag">
+        <MappingFragment StoreEntitySet="Tags">
+          <ScalarProperty Name="Tag_Name" ColumnName="Tag_Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags_Videos">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Tags_Videos">
+        <MappingFragment StoreEntitySet="Tags_Videos">
+          <ScalarProperty Name="Video_ID" ColumnName="Video_ID" />
+          <ScalarProperty Name="Tag_ID" ColumnName="Tag_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users_GGBDeals">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Users_GGBDeals">
+        <MappingFragment StoreEntitySet="Users_GGBDeals">
+          <ScalarProperty Name="Pay" ColumnName="Pay" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="GGBDeal_ID" ColumnName="GGBDeal_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Videos">
+      <EntityTypeMapping TypeName="GamingGateStudiosModel.Video">
+        <MappingFragment StoreEntitySet="Videos">
+          <ScalarProperty Name="Program_ID" ColumnName="Program_ID" />
+          <ScalarProperty Name="Cat_ID" ColumnName="Cat_ID" />
+          <ScalarProperty Name="For_Users_Only" ColumnName="For_Users_Only" />
+          <ScalarProperty Name="All_Rate" ColumnName="All_Rate" />
+          <ScalarProperty Name="Num_Rate" ColumnName="Num_Rate" />
+          <ScalarProperty Name="Embed_URL" ColumnName="Embed_URL" />
+          <ScalarProperty Name="Watch" ColumnName="Watch" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GamerActive1" FunctionName="GamingGateStudiosModel.Store.GamerActive" />
+    <FunctionImportMapping FunctionImportName="GamerNotActive1" FunctionName="GamingGateStudiosModel.Store.GamerNotActive" />
+  </EntityContainerMapping>
+</Mapping>

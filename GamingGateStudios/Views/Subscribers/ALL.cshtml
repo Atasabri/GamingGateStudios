@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "ALL";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ALL</h2>
+<h2>This Form For send Mail To All ( Users , Subscribers , Contacts )</h2>
+<form action="~/Subscribers/ALL" method="post" enctype="multipart/form-data">
+
+    <h3>The Mail Subject  : </h3> <input id="Text1" type="text" name="Subject" class="form-control" /><br />
+    <h3>The Mail Html File  : </h3> <input id="File1" required="Required" type="file" name="file" /><br />
+    <br />
+    <input id="Submit1" type="submit" value="Send Mail To All" class="btn btn-default" />
+</form>

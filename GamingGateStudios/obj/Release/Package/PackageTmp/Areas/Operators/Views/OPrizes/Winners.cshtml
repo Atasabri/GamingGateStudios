@@ -1,0 +1,49 @@
+﻿@model IEnumerable<GamingGateStudios.Models.Winner>
+
+@{
+    ViewBag.Title = "Winners";
+    Layout = "~/Areas/Operators/Views/Shared/_Layout.cshtml";
+}
+
+<div style="width:90%; margin:0 auto;">
+    <h2>Winners</h2>
+    <div class="graph">
+        <div class="tables" style="align-items:center">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr style="align-items:center">
+                        <th>#</th>
+                        <th>@Html.DisplayNameFor(model => model.Gamer.UserName)</th>
+                        <th>@Html.DisplayNameFor(model => model.Gamer.Phone)</th>
+                        <th>@Html.DisplayNameFor(model => model.Received)</th>
+                        <th>Photo</th>
+                    </tr>
+                </thead>
+                <tbody style="align-items:center">
+                    @{
+                        int counter = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        counter++;
+                        <tr>
+                            <th scope="row">@counter</th>
+                            <td>@Html.ActionLink(item.Gamer.UserName, "Details","OGamers", new { id = item.Gamer_ID },null)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Gamer.Phone)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Received)</td>
+                            @if (item.User.Face_ID != null)
+                            {
+                                <td><img src="https://graph.facebook.com/@item.User.Face_ID/picture" alt="" width="60" height="60" /></td>
+                            }
+                            else
+                            {
+                                <td><img src="~/Uploads/Users/@(item.User_ID).jpg" alt="" width="60" height="60" /></td>
+                            }
+                         </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

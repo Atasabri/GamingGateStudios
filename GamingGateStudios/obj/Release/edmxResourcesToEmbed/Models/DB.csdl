@@ -1,0 +1,619 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GamingGateStudiosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Admin_Type" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AD">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Client_ID" Type="Int32" Nullable="false" />
+    <Property Name="Enable" Type="Boolean" Nullable="false" />
+    <Property Name="Width" Type="Int32" Nullable="false" />
+    <Property Name="Height" Type="Int32" Nullable="false" />
+    <Property Name="CPM" Type="Int32" Nullable="false" />
+    <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Click" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ads_Clients" Relationship="Self.FK__ADS__Client_ID__3D5E1FD2" FromRole="ADS" ToRole="Ads_Clients" />
+  </EntityType>
+  <EntityType Name="Ads_Clients">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Target_CPM" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ADS" Relationship="Self.FK__ADS__Client_ID__3D5E1FD2" FromRole="Ads_Clients" ToRole="ADS" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="Agency_ID" Type="Int32" />
+    <NavigationProperty Name="Agency" Relationship="GamingGateStudiosModel.FK__Ads_Clien__Agenc__690797E6" FromRole="Ads_Clients" ToRole="Agency" />
+  </EntityType>
+  <EntityType Name="Channel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Splashes" Relationship="Self.FK__Splashes__Channe__4316F928" FromRole="Channels" ToRole="Splashes" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Deal_Gamers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Gamer_ID" Type="Int32" Nullable="false" />
+    <Property Name="Deal_ID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Deal" Relationship="Self.FK__Deal_Game__Deal___03F0984C" FromRole="Deal_Gamers" ToRole="Deals" />
+    <NavigationProperty Name="Gamer" Relationship="Self.FK__Deal_Game__Gamer__08B54D69" FromRole="Deal_Gamers" ToRole="Gamers" />
+  </EntityType>
+  <EntityType Name="Deal_Member">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Deal_ID" Type="Int32" Nullable="false" />
+    <Property Name="Member_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Deal" Relationship="Self.FK__Deal_Memb__Deal___7F2BE32F" FromRole="Deal_Member" ToRole="Deals" />
+    <NavigationProperty Name="MemberShip" Relationship="Self.FK__Deal_Memb__Membe__00200768" FromRole="Deal_Member" ToRole="MemberShip" />
+    <Property Name="GGB" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Deal">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name_AR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Game_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Deal_Gamers" Relationship="Self.FK__Deal_Game__Deal___03F0984C" FromRole="Deals" ToRole="Deal_Gamers" />
+    <NavigationProperty Name="Deal_Member" Relationship="Self.FK__Deal_Memb__Deal___7F2BE32F" FromRole="Deals" ToRole="Deal_Member" />
+    <NavigationProperty Name="Game" Relationship="Self.FK__Deals__Game_ID__7C4F7684" FromRole="Deals" ToRole="Games" />
+  </EntityType>
+  <EntityType Name="Gamer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Member" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Gender" Type="Int32" />
+    <Property Name="Points" Type="Int32" />
+    <Property Name="Tries" Type="Int32" />
+    <Property Name="Mony_Send" Type="Double" />
+    <Property Name="Money_Token" Type="Double" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Game_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Deal_Gamers" Relationship="Self.FK__Deal_Game__Gamer__08B54D69" FromRole="Gamers" ToRole="Deal_Gamers" />
+    <NavigationProperty Name="Winners" Relationship="Self.FK__Winners__Gamer_I__0A9D95DB" FromRole="Gamers" ToRole="Winners" />
+    <NavigationProperty Name="Game" Relationship="Self.FK_Gamers_Games" FromRole="Gamers" ToRole="Games" />
+  </EntityType>
+  <EntityType Name="Game">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name_AR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description_AR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Android_URL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Ituens_URL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Windows_URL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Facebook_URL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="KindleFire_URL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EB_URL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Game_Link" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Deals" Relationship="Self.FK__Deals__Game_ID__7C4F7684" FromRole="Games" ToRole="Deals" />
+    <NavigationProperty Name="Gamers" Relationship="Self.FK_Gamers_Games" FromRole="Games" ToRole="Gamers" />
+    <Property Name="Trailer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Watch" Type="Int32" Nullable="false" />
+    <Property Name="Start_Tries" Type="Int32" Nullable="false" />
+    <Property Name="Start_Points" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Splashes" Relationship="GamingGateStudiosModel.FK__Splashes__Game_I__6AEFE058" FromRole="Game" ToRole="Splash" />
+  </EntityType>
+  <EntityType Name="MemberShip">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="Limit_Token_Money" Type="Double" />
+    <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Deal_Member" Relationship="Self.FK__Deal_Memb__Membe__00200768" FromRole="MemberShip" ToRole="Deal_Member" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Users__Member_ID__04E4BC85" FromRole="MemberShip" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Operator">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Portfolio">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Prize">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name_AR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="Third_Partner" Type="Int32" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="Points" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Third_Partner1" Relationship="Self.FK__Prizes__Third_Pa__6E01572D" FromRole="Prizes" ToRole="Third_Partner" />
+    <NavigationProperty Name="Winners" Relationship="Self.FK__Winners__Prize_I__76969D2E" FromRole="Prizes" ToRole="Winners" />
+  </EntityType>
+  <EntityType Name="Splash">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Channel_ID" Type="Int32" Nullable="false" />
+    <Property Name="Enable" Type="Boolean" Nullable="false" />
+    <Property Name="Width" Type="Int32" Nullable="false" />
+    <Property Name="Height" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Channel" Relationship="Self.FK__Splashes__Channe__4316F928" FromRole="Splashes" ToRole="Channels" />
+    <Property Name="Game_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Game" Relationship="GamingGateStudiosModel.FK__Splashes__Game_I__6AEFE058" FromRole="Splash" ToRole="Game" />
+  </EntityType>
+  <EntityType Name="Subscriber">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Third_Partner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Prizes" Relationship="Self.FK__Prizes__Third_Pa__6E01572D" FromRole="Third_Partner" ToRole="Prizes" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Gender" Type="Int32" />
+    <Property Name="Face_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Member_ID" Type="Int32" Nullable="false" />
+    <Property Name="Money_Token" Type="Double" />
+    <NavigationProperty Name="MemberShip" Relationship="Self.FK__Users__Member_ID__04E4BC85" FromRole="Users" ToRole="MemberShip" />
+    <NavigationProperty Name="Winners" Relationship="Self.FK__Winners__User_ID__75A278F5" FromRole="Users" ToRole="Winners" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="GGB" Type="Int32" />
+    <NavigationProperty Name="Users_GGBDeals" Relationship="GamingGateStudiosModel.FK__Users_GGB__User___55F4C372" FromRole="User" ToRole="Users_GGBDeals" />
+    <Property Name="Pay" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Winner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Prize_ID" Type="Int32" Nullable="false" />
+    <Property Name="Gamer_ID" Type="Int32" Nullable="false" />
+    <Property Name="Received" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Gamer" Relationship="Self.FK__Winners__Gamer_I__0A9D95DB" FromRole="Winners" ToRole="Gamers" />
+    <NavigationProperty Name="Prize" Relationship="Self.FK__Winners__Prize_I__76969D2E" FromRole="Winners" ToRole="Prizes" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Winners__User_ID__75A278F5" FromRole="Winners" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK__ADS__Client_ID__3D5E1FD2">
+    <End Role="Ads_Clients" Type="Self.Ads_Clients" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ADS" Type="Self.AD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ads_Clients">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ADS">
+        <PropertyRef Name="Client_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Splashes__Channe__4316F928">
+    <End Role="Channels" Type="Self.Channel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Splashes" Type="Self.Splash" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Channels">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Splashes">
+        <PropertyRef Name="Channel_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Deal_Game__Deal___03F0984C">
+    <End Role="Deals" Type="Self.Deal" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Deal_Gamers" Type="Self.Deal_Gamers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Deals">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Deal_Gamers">
+        <PropertyRef Name="Deal_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Deal_Game__Gamer__08B54D69">
+    <End Role="Gamers" Type="Self.Gamer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Deal_Gamers" Type="Self.Deal_Gamers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gamers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Deal_Gamers">
+        <PropertyRef Name="Gamer_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Deal_Memb__Deal___7F2BE32F">
+    <End Role="Deals" Type="Self.Deal" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Deal_Member" Type="Self.Deal_Member" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Deals">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Deal_Member">
+        <PropertyRef Name="Deal_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Deal_Memb__Membe__00200768">
+    <End Role="MemberShip" Type="Self.MemberShip" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Deal_Member" Type="Self.Deal_Member" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberShip">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Deal_Member">
+        <PropertyRef Name="Member_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Deals__Game_ID__7C4F7684">
+    <End Role="Games" Type="Self.Game" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Deals" Type="Self.Deal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Games">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Deals">
+        <PropertyRef Name="Game_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Winners__Gamer_I__0A9D95DB">
+    <End Role="Gamers" Type="Self.Gamer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Winners" Type="Self.Winner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gamers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Winners">
+        <PropertyRef Name="Gamer_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Gamers_Games">
+    <End Role="Games" Type="Self.Game" Multiplicity="1" />
+    <End Role="Gamers" Type="Self.Gamer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Games">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Gamers">
+        <PropertyRef Name="Game_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__Member_ID__04E4BC85">
+    <End Role="MemberShip" Type="Self.MemberShip" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberShip">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="Member_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Prizes__Third_Pa__6E01572D">
+    <End Role="Third_Partner" Type="Self.Third_Partner" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Prizes" Type="Self.Prize" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Third_Partner">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Prizes">
+        <PropertyRef Name="Third_Partner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Winners__Prize_I__76969D2E">
+    <End Role="Prizes" Type="Self.Prize" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Winners" Type="Self.Winner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prizes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Winners">
+        <PropertyRef Name="Prize_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Winners__User_ID__75A278F5">
+    <End Role="Users" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Winners" Type="Self.Winner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Winners">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="ADS" EntityType="Self.AD" />
+    <EntitySet Name="Ads_Clients" EntityType="Self.Ads_Clients" />
+    <EntitySet Name="Channels" EntityType="Self.Channel" />
+    <EntitySet Name="Contacts" EntityType="Self.Contact" />
+    <EntitySet Name="Deal_Gamers" EntityType="Self.Deal_Gamers" />
+    <EntitySet Name="Deal_Member" EntityType="Self.Deal_Member" />
+    <EntitySet Name="Deals" EntityType="Self.Deal" />
+    <EntitySet Name="Gamers" EntityType="Self.Gamer" />
+    <EntitySet Name="Games" EntityType="Self.Game" />
+    <EntitySet Name="MemberShips" EntityType="Self.MemberShip" />
+    <EntitySet Name="Operators" EntityType="Self.Operator" />
+    <EntitySet Name="Portfolios" EntityType="Self.Portfolio" />
+    <EntitySet Name="Prizes" EntityType="Self.Prize" />
+    <EntitySet Name="Splashes" EntityType="Self.Splash" />
+    <EntitySet Name="Subscribers" EntityType="Self.Subscriber" />
+    <EntitySet Name="Third_Partner" EntityType="Self.Third_Partner" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Winners" EntityType="Self.Winner" />
+    <AssociationSet Name="FK__ADS__Client_ID__3D5E1FD2" Association="Self.FK__ADS__Client_ID__3D5E1FD2">
+      <End Role="Ads_Clients" EntitySet="Ads_Clients" />
+      <End Role="ADS" EntitySet="ADS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Splashes__Channe__4316F928" Association="Self.FK__Splashes__Channe__4316F928">
+      <End Role="Channels" EntitySet="Channels" />
+      <End Role="Splashes" EntitySet="Splashes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Deal_Game__Deal___03F0984C" Association="Self.FK__Deal_Game__Deal___03F0984C">
+      <End Role="Deals" EntitySet="Deals" />
+      <End Role="Deal_Gamers" EntitySet="Deal_Gamers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Deal_Game__Gamer__08B54D69" Association="Self.FK__Deal_Game__Gamer__08B54D69">
+      <End Role="Gamers" EntitySet="Gamers" />
+      <End Role="Deal_Gamers" EntitySet="Deal_Gamers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Deal_Memb__Deal___7F2BE32F" Association="Self.FK__Deal_Memb__Deal___7F2BE32F">
+      <End Role="Deals" EntitySet="Deals" />
+      <End Role="Deal_Member" EntitySet="Deal_Member" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Deal_Memb__Membe__00200768" Association="Self.FK__Deal_Memb__Membe__00200768">
+      <End Role="MemberShip" EntitySet="MemberShips" />
+      <End Role="Deal_Member" EntitySet="Deal_Member" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Deals__Game_ID__7C4F7684" Association="Self.FK__Deals__Game_ID__7C4F7684">
+      <End Role="Games" EntitySet="Games" />
+      <End Role="Deals" EntitySet="Deals" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Winners__Gamer_I__0A9D95DB" Association="Self.FK__Winners__Gamer_I__0A9D95DB">
+      <End Role="Gamers" EntitySet="Gamers" />
+      <End Role="Winners" EntitySet="Winners" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gamers_Games" Association="Self.FK_Gamers_Games">
+      <End Role="Games" EntitySet="Games" />
+      <End Role="Gamers" EntitySet="Gamers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__Member_ID__04E4BC85" Association="Self.FK__Users__Member_ID__04E4BC85">
+      <End Role="MemberShip" EntitySet="MemberShips" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Prizes__Third_Pa__6E01572D" Association="Self.FK__Prizes__Third_Pa__6E01572D">
+      <End Role="Third_Partner" EntitySet="Third_Partner" />
+      <End Role="Prizes" EntitySet="Prizes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Winners__Prize_I__76969D2E" Association="Self.FK__Winners__Prize_I__76969D2E">
+      <End Role="Prizes" EntitySet="Prizes" />
+      <End Role="Winners" EntitySet="Winners" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Winners__User_ID__75A278F5" Association="Self.FK__Winners__User_ID__75A278F5">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Winners" EntitySet="Winners" />
+    </AssociationSet>
+    <FunctionImport Name="Rest_Users" />
+    <EntitySet Name="GGBDeals" EntityType="GamingGateStudiosModel.GGBDeal" />
+    <EntitySet Name="Users_GGBDeals" EntityType="GamingGateStudiosModel.Users_GGBDeals" />
+    <AssociationSet Name="FK__Users_GGB__User___55F4C372" Association="GamingGateStudiosModel.FK__Users_GGB__User___55F4C372">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Users_GGBDeals" EntitySet="Users_GGBDeals" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users_GGB__GGBDe__5224328E" Association="GamingGateStudiosModel.FK__Users_GGB__GGBDe__5224328E">
+      <End Role="GGBDeal" EntitySet="GGBDeals" />
+      <End Role="Users_GGBDeals" EntitySet="Users_GGBDeals" />
+    </AssociationSet>
+    <FunctionImport Name="GameWatch">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ADClick">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ADWatch">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GamerActive">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GamerNotActive">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Agencies" EntityType="GamingGateStudiosModel.Agency" />
+    <AssociationSet Name="FK__Ads_Clien__Agenc__690797E6" Association="GamingGateStudiosModel.FK__Ads_Clien__Agenc__690797E6">
+      <End Role="Agency" EntitySet="Agencies" />
+      <End Role="Ads_Clients" EntitySet="Ads_Clients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Splashes__Game_I__6AEFE058" Association="GamingGateStudiosModel.FK__Splashes__Game_I__6AEFE058">
+      <End Role="Game" EntitySet="Games" />
+      <End Role="Splash" EntitySet="Splashes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="GGBDeal">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="GGB" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Users_GGBDeals" Relationship="GamingGateStudiosModel.FK__Users_GGB__GGBDe__5224328E" FromRole="GGBDeal" ToRole="Users_GGBDeals" />
+  </EntityType>
+  <EntityType Name="Users_GGBDeals">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="GGBDeal_ID" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="GamingGateStudiosModel.FK__Users_GGB__User___55F4C372" FromRole="Users_GGBDeals" ToRole="User" />
+    <NavigationProperty Name="GGBDeal" Relationship="GamingGateStudiosModel.FK__Users_GGB__GGBDe__5224328E" FromRole="Users_GGBDeals" ToRole="GGBDeal" />
+    <Property Name="Pay" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Users_GGB__User___55F4C372">
+    <End Type="GamingGateStudiosModel.User" Role="User" Multiplicity="1" />
+    <End Type="GamingGateStudiosModel.Users_GGBDeals" Role="Users_GGBDeals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Users_GGBDeals">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users_GGB__GGBDe__5224328E">
+    <End Type="GamingGateStudiosModel.GGBDeal" Role="GGBDeal" Multiplicity="1" />
+    <End Type="GamingGateStudiosModel.Users_GGBDeals" Role="Users_GGBDeals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GGBDeal">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Users_GGBDeals">
+        <PropertyRef Name="GGBDeal_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Agency">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Target_CPM" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Ads_Clients" Relationship="GamingGateStudiosModel.FK__Ads_Clien__Agenc__690797E6" FromRole="Agency" ToRole="Ads_Clients" />
+  </EntityType>
+  <Association Name="FK__Ads_Clien__Agenc__690797E6">
+    <End Type="GamingGateStudiosModel.Agency" Role="Agency" Multiplicity="0..1" />
+    <End Type="GamingGateStudiosModel.Ads_Clients" Role="Ads_Clients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agency">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Ads_Clients">
+        <PropertyRef Name="Agency_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Splashes__Game_I__6AEFE058">
+    <End Type="GamingGateStudiosModel.Game" Role="Game" Multiplicity="1" />
+    <End Type="GamingGateStudiosModel.Splash" Role="Splash" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Splash">
+        <PropertyRef Name="Game_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,668 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5B06B04D-56AE-45FE-A56A-FBD9181491FF}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GamingGateStudios</RootNamespace>
+    <AssemblyName>GamingGateStudios</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Operators\Controllers\OADsController.cs" />
+    <Compile Include="Areas\Operators\Controllers\OAgenciesController.cs" />
+    <Compile Include="Areas\Operators\Controllers\OGamersController.cs" />
+    <Compile Include="Areas\Operators\Controllers\OGamesController.cs" />
+    <Compile Include="Areas\Operators\Controllers\OPrizesController.cs" />
+    <Compile Include="Areas\Operators\Controllers\OSplashesController.cs" />
+    <Compile Include="Areas\Operators\Models\SIGNINDATA.cs" />
+    <Compile Include="Areas\Operators\OperatorsAreaRegistration.cs" />
+    <Compile Include="Controllers\AdminsController.cs" />
+    <Compile Include="Controllers\ADsController.cs" />
+    <Compile Include="Controllers\Ads_ClientsController.cs" />
+    <Compile Include="Controllers\AgenciesController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\ChannelsController.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\DealsController.cs" />
+    <Compile Include="Controllers\GamersController.cs" />
+    <Compile Include="Controllers\GamesController.cs" />
+    <Compile Include="Controllers\GGBDealsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageGameController.cs" />
+    <Compile Include="Controllers\MemberShipsController.cs" />
+    <Compile Include="Controllers\PortfoliosController.cs" />
+    <Compile Include="Controllers\PrizesController.cs" />
+    <Compile Include="Controllers\SplashesController.cs" />
+    <Compile Include="Controllers\SubscribersController.cs" />
+    <Compile Include="Controllers\Third_PartnerController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\WinnersController.cs" />
+    <Compile Include="DEL.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AD.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ads_Clients.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Agency.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuthUser.cs" />
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Channel.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Contact.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Deal.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Deal_Gamers.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Deal_Member.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FacebookLocation.cs" />
+    <Compile Include="Models\FacebookUser.cs" />
+    <Compile Include="Models\Game.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Gamer.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GGBDeal.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MemberShip.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\News.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Operator.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Payment.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PayPageRequest.cs" />
+    <Compile Include="Models\PayPageResonse.cs" />
+    <Compile Include="Models\Portfolio.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Prize.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Program.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Splash.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Subscriber.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tag.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tags_Videos.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Third_Partner.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users_GGBDeals.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Video.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Winner.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SiteResource.ar.Designer.cs">
+      <DependentUpon>SiteResource.ar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SiteResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SiteResource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Operators\css\bootstrap.min.css" />
+    <Content Include="Areas\Operators\css\font-awesome.css" />
+    <Content Include="Areas\Operators\css\icon-font.min.css" />
+    <Content Include="Areas\Operators\css\style.css" />
+    <Content Include="Areas\Operators\images\icons.png" />
+    <Content Include="Areas\Operators\js\bootstrap.min.js" />
+    <Content Include="Areas\Operators\js\jquery-1.10.2.min.js" />
+    <Content Include="Areas\Operators\js\jquery.nicescroll.js" />
+    <Content Include="Areas\Operators\js\scripts.js" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Input.css" />
+    <Content Include="Content\Membership\flexslider.css" />
+    <Content Include="Content\Membership\popup-box.css" />
+    <Content Include="Content\Membership\style.css" />
+    <Content Include="Content\Pricing\style.css" />
+    <Content Include="Content\Profile\popuo-box.css" />
+    <Content Include="Content\Profile\style.css" />
+    <Content Include="Content\SignIn\font-awesome.css" />
+    <Content Include="Content\SignIn\style.css" />
+    <Content Include="Content\SignUp\css\style.css" />
+    <Content Include="Content\Soon\font-awesome.min.css" />
+    <Content Include="Content\Soon\style.css" />
+    <Content Include="Content\Style\css\bootstrap.css" />
+    <Content Include="Content\Style\css\popuo-box.css" />
+    <Content Include="Content\Style\css\style.css" />
+    <Content Include="images\abt.jpg" />
+    <Content Include="images\b6.jpg" />
+    <Content Include="images\banner.jpg" />
+    <Content Include="images\dott.png" />
+    <Content Include="images\fet.jpg" />
+    <Content Include="images\fet2.jpg" />
+    <Content Include="images\img-sprite.png" />
+    <Content Include="images\Languages\ar.png" />
+    <Content Include="images\Languages\en.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\nav.png" />
+    <Content Include="images\Payment\paytab.png" />
+    <Content Include="images\Payment\payza.png" />
+    <Content Include="images\Profile\bg40.jpg" />
+    <Content Include="images\Profile\woman-1254453_640.jpg" />
+    <Content Include="images\search.png" />
+    <Content Include="images\SignIn\1.jpg" />
+    <Content Include="images\SignIn\facebook.png" />
+    <Content Include="images\SignIn\twitter.png" />
+    <Content Include="images\SignUp\bgg.jpg" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="images\social-icons.png" />
+    <Content Include="images\subscribe.png" />
+    <Content Include="images\subscribe1.png" />
+    <Content Include="images\vid-bg.jpg" />
+    <Content Include="images\vid-img.jpg" />
+    <Content Include="images\vid-play.png" />
+    <Content Include="logo.jpg" />
+    <Content Include="Models\DB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB.edmx</DependentUpon>
+      <LastGenOutput>DB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB.edmx</DependentUpon>
+      <LastGenOutput>DB.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\Operators\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Operators\Views\OGames\Details.cshtml" />
+    <Content Include="Areas\Operators\Views\OGames\Index.cshtml" />
+    <Content Include="Areas\Operators\Views\OGames\SignIn.cshtml" />
+    <Content Include="Areas\Operators\Views\OGamers\Details.cshtml" />
+    <Content Include="Areas\Operators\Views\OGamers\Index.cshtml" />
+    <Content Include="Areas\Operators\Views\OGamers\Age.cshtml" />
+    <Content Include="Areas\Operators\Views\OGamers\Country.cshtml" />
+    <Content Include="Areas\Operators\Views\OGamers\Gender.cshtml" />
+    <Content Include="Areas\Operators\Views\OGamers\Active.cshtml" />
+    <Content Include="Areas\Operators\Views\OPrizes\Details.cshtml" />
+    <Content Include="Areas\Operators\Views\OPrizes\Index.cshtml" />
+    <Content Include="Areas\Operators\Views\OPrizes\Winners.cshtml" />
+    <Content Include="Areas\Operators\Views\OPrizes\Unreceived.cshtml" />
+    <Content Include="Areas\Operators\Views\OADs\Details.cshtml" />
+    <Content Include="Areas\Operators\Views\OADs\Index.cshtml" />
+    <Content Include="Areas\Operators\Views\OADs\Data.cshtml" />
+    <Content Include="Areas\Operators\Views\OSplashes\Details.cshtml" />
+    <Content Include="Areas\Operators\Views\OSplashes\Index.cshtml" />
+    <Content Include="Areas\Operators\Views\OSplashes\Data.cshtml" />
+    <EntityDeploy Include="Models\DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DB.edmx.diagram">
+      <DependentUpon>DB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Operators\Views\web.config" />
+    <Content Include="Areas\Operators\Views\OAgencies\Index.cshtml" />
+    <Content Include="Areas\Operators\Views\OAgencies\CreateClient.cshtml" />
+    <Content Include="Areas\Operators\Views\OAgencies\DetailsClient.cshtml" />
+    <Content Include="Areas\Operators\Views\OAgencies\EditClient.cshtml" />
+    <Content Include="Areas\Operators\Views\OAgencies\ADS.cshtml" />
+    <Content Include="Areas\Operators\Views\OAgencies\CreateAD.cshtml" />
+    <Content Include="Areas\Operators\Views\OAgencies\DetailsAD.cshtml" />
+    <Content Include="Areas\Operators\Views\OAgencies\EditAD.cshtml" />
+    <Content Include="Areas\Operators\Views\OAgencies\Data.cshtml" />
+    <Content Include="Areas\Operators\Views\OAgencies\Compagin.cshtml" />
+    <None Include="Properties\PublishProfiles\GamingGate.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\jquery-1.11.0.min.js" />
+    <Content Include="Scripts\js\jquery.magnific-popup.js" />
+    <Content Include="Scripts\js\jquery.mixitup.min.js" />
+    <Content Include="Scripts\js\modernizr.custom.53451.js" />
+    <Content Include="Scripts\Membership\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\Membership\jquery.flexslider.js" />
+    <Content Include="Scripts\Membership\jquery.magnific-popup.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Profile\jquery.magnific-popup.js" />
+    <Content Include="Scripts\Profile\jquery.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\SignIn\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\SignUp\filedrag.js" />
+    <Content Include="Scripts\SignUp\jquery.min.js" />
+    <Content Include="Scripts\Soon\jquery-1.12.3.min.js" />
+    <Content Include="Scripts\Soon\moment-timezone-with-data.js" />
+    <Content Include="Scripts\Soon\moment.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Admins\Create.cshtml" />
+    <Content Include="Views\Admins\Delete.cshtml" />
+    <Content Include="Views\Admins\Details.cshtml" />
+    <Content Include="Views\Admins\Edit.cshtml" />
+    <Content Include="Views\Admins\Index.cshtml" />
+    <Content Include="Views\Subscribers\Create.cshtml" />
+    <Content Include="Views\Subscribers\Delete.cshtml" />
+    <Content Include="Views\Subscribers\Details.cshtml" />
+    <Content Include="Views\Subscribers\Edit.cshtml" />
+    <Content Include="Views\Subscribers\Index.cshtml" />
+    <Content Include="Views\Contacts\Create.cshtml" />
+    <Content Include="Views\Contacts\Delete.cshtml" />
+    <Content Include="Views\Contacts\Details.cshtml" />
+    <Content Include="Views\Contacts\Edit.cshtml" />
+    <Content Include="Views\Contacts\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Subscribers\ALL.cshtml" />
+    <Content Include="Views\Portfolios\Create.cshtml" />
+    <Content Include="Views\Portfolios\Delete.cshtml" />
+    <Content Include="Views\Portfolios\Details.cshtml" />
+    <Content Include="Views\Portfolios\Edit.cshtml" />
+    <Content Include="Views\Portfolios\Index.cshtml" />
+    <Content Include="Views\Users\Countries.cshtml" />
+    <Content Include="Views\Users\Age.cshtml" />
+    <Content Include="Views\Users\Gender.cshtml" />
+    <Content Include="Views\Ads_Clients\Create.cshtml" />
+    <Content Include="Views\Ads_Clients\Delete.cshtml" />
+    <Content Include="Views\Ads_Clients\Details.cshtml" />
+    <Content Include="Views\Ads_Clients\Edit.cshtml" />
+    <Content Include="Views\Ads_Clients\Index.cshtml" />
+    <Content Include="Views\ADs\Create.cshtml" />
+    <Content Include="Views\ADs\Delete.cshtml" />
+    <Content Include="Views\ADs\Details.cshtml" />
+    <Content Include="Views\ADs\Edit.cshtml" />
+    <Content Include="Views\ADs\Index.cshtml" />
+    <Content Include="Views\Channels\Create.cshtml" />
+    <Content Include="Views\Channels\Delete.cshtml" />
+    <Content Include="Views\Channels\Details.cshtml" />
+    <Content Include="Views\Channels\Edit.cshtml" />
+    <Content Include="Views\Channels\Index.cshtml" />
+    <Content Include="Views\Splashes\Index.cshtml" />
+    <Content Include="Views\Splashes\Details.cshtml" />
+    <Content Include="Views\Splashes\Create.cshtml" />
+    <Content Include="Views\Splashes\Edit.cshtml" />
+    <Content Include="Views\Splashes\Delete.cshtml" />
+    <Content Include="Views\Third_Partner\Create.cshtml" />
+    <Content Include="Views\Third_Partner\Delete.cshtml" />
+    <Content Include="Views\Third_Partner\Details.cshtml" />
+    <Content Include="Views\Third_Partner\Edit.cshtml" />
+    <Content Include="Views\Third_Partner\Index.cshtml" />
+    <Content Include="Views\MemberShips\Create.cshtml" />
+    <Content Include="Views\MemberShips\Delete.cshtml" />
+    <Content Include="Views\MemberShips\Details.cshtml" />
+    <Content Include="Views\MemberShips\Edit.cshtml" />
+    <Content Include="Views\MemberShips\Index.cshtml" />
+    <Content Include="Views\Gamers\Create.cshtml" />
+    <Content Include="Views\Gamers\Delete.cshtml" />
+    <Content Include="Views\Gamers\Details.cshtml" />
+    <Content Include="Views\Gamers\Index.cshtml" />
+    <Content Include="Views\Games\Create.cshtml" />
+    <Content Include="Views\Games\Delete.cshtml" />
+    <Content Include="Views\Games\Details.cshtml" />
+    <Content Include="Views\Games\Edit.cshtml" />
+    <Content Include="Views\Games\Index.cshtml" />
+    <Content Include="Views\Gamers\Countries.cshtml" />
+    <Content Include="Views\Gamers\Age.cshtml" />
+    <Content Include="Views\Gamers\Gender.cshtml" />
+    <Content Include="Views\Deals\Create.cshtml" />
+    <Content Include="Views\Deals\Delete.cshtml" />
+    <Content Include="Views\Deals\Details.cshtml" />
+    <Content Include="Views\Deals\Edit.cshtml" />
+    <Content Include="Views\Deals\Index.cshtml" />
+    <Content Include="Views\Deals\_Data.cshtml" />
+    <Content Include="Views\Gamers\Active.cshtml" />
+    <Content Include="Views\Prizes\Create.cshtml" />
+    <Content Include="Views\Prizes\Delete.cshtml" />
+    <Content Include="Views\Prizes\Details.cshtml" />
+    <Content Include="Views\Prizes\Edit.cshtml" />
+    <Content Include="Views\Prizes\Index.cshtml" />
+    <Content Include="Views\Winners\Delete.cshtml" />
+    <Content Include="Views\Winners\Details.cshtml" />
+    <Content Include="Views\Winners\Edit.cshtml" />
+    <Content Include="Views\Winners\Index.cshtml" />
+    <Content Include="Views\Winners\UnReceived.cshtml" />
+    <Content Include="Views\Shared\_MainLayout.cshtml" />
+    <Content Include="Views\Home\Memberships.cshtml" />
+    <Content Include="Views\Home\SignUp.cshtml" />
+    <Content Include="Views\Home\SignIn.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\ProfilePage.cshtml" />
+    <Content Include="Views\Home\Game.cshtml" />
+    <Content Include="Views\Home\Games.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Prizes.cshtml" />
+    <Content Include="Views\Home\Winners.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Home\Deals.cshtml" />
+    <Content Include="Views\Home\Deal.cshtml" />
+    <Content Include="Views\Home\Prize.cshtml" />
+    <Content Include="Views\GGBDeals\Create.cshtml" />
+    <Content Include="Views\GGBDeals\Delete.cshtml" />
+    <Content Include="Views\GGBDeals\Details.cshtml" />
+    <Content Include="Views\GGBDeals\Edit.cshtml" />
+    <Content Include="Views\GGBDeals\Index.cshtml" />
+    <Content Include="Views\Home\Pricing.cshtml" />
+    <Content Include="Views\Agencies\Create.cshtml" />
+    <Content Include="Views\Agencies\Delete.cshtml" />
+    <Content Include="Views\Agencies\Details.cshtml" />
+    <Content Include="Views\Agencies\Edit.cshtml" />
+    <Content Include="Views\Agencies\Index.cshtml" />
+    <Content Include="Views\GGBDeals\PaymentMethod.cshtml" />
+    <Content Include="Views\Users\PaymentMethod.cshtml" />
+    <Content Include="Views\Home\Soon.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Operators\fonts\" />
+    <Folder Include="Uploads\Admins\" />
+    <Folder Include="Uploads\AdsClients\" />
+    <Folder Include="Uploads\ADS\" />
+    <Folder Include="Uploads\Agency\" />
+    <Folder Include="Uploads\Channels\" />
+    <Folder Include="Uploads\Deals\" />
+    <Folder Include="Uploads\Games\" />
+    <Folder Include="Uploads\Member\" />
+    <Folder Include="Uploads\Portfolio\" />
+    <Folder Include="Uploads\Prizes\" />
+    <Folder Include="Uploads\Splashes\" />
+    <Folder Include="Uploads\ThirdPartner\" />
+    <Folder Include="Uploads\Users\" />
+    <Folder Include="Views\ManageGame\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SiteResource.ar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SiteResource.ar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SiteResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SiteResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60084</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:60084/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,90 @@
+﻿@model GamingGateStudios.Models.MemberShip
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name Details</h2>
+
+<div>
+    <h4>MemberShip</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Limit_Token_Money)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Limit_Token_Money)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.color)
+        </dt>
+
+        <dd>
+            <span style="background-color:@Model.color" >@Model.color</span>           
+        </dd>
+        <dt>
+            Number Of Users
+        </dt>
+        <dd>
+            @Model.Users.Count()
+        </dd>
+        <dt>
+            Photo
+        </dt>
+        <dd>
+            <img src="~/Uploads/Member/@(Model.ID).jpg" alt="" width="500" height="300" />
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<br />
+<h2>Users</h2>
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+        </tr>
+        @foreach (var item in Model.Users)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Email
+                </td>
+                <td>
+                    @Html.ActionLink("Go To User", "Details", "Users", new { @id = item.ID }, null)
+                </td>
+            </tr>
+        }
+    </table>
+</div>

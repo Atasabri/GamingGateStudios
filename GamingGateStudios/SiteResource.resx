@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="hello" xml:space="preserve">
+    <value>Hello</value>
+  </data>
+  <data name="Homedescription1" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore</value>
+  </data>
+  <data name="Homedescription2" xml:space="preserve">
+    <value>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>More</value>
+  </data>
+  <data name="NewGames" xml:space="preserve">
+    <value>New Games</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="FName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="LName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>Date Of Birth</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="EditYourProfile" xml:space="preserve">
+    <value>Edit Your Profile</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+  <data name="YourProfile" xml:space="preserve">
+    <value>Your Profile</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="emailused" xml:space="preserve">
+    <value>Email Or Password Is Used !!</value>
+  </data>
+  <data name="ErrorSaved" xml:space="preserve">
+    <value>Error In Save Data !!</value>
+  </data>
+  <data name="ImageError" xml:space="preserve">
+    <value>Profile Photo Must Be In (.jpg , .png , .gif , .bmp)</value>
+  </data>
+  <data name="Saved" xml:space="preserve">
+    <value>Your Information Saved Successufly</value>
+  </data>
+  <data name="VaildEmail" xml:space="preserve">
+    <value>Please Enter Valid Email !!</value>
+  </data>
+  <data name="Subscribe" xml:space="preserve">
+    <value>Subscribe For News</value>
+  </data>
+  <data name="bestgames" xml:space="preserve">
+    <value>Best Games</value>
+  </data>
+  <data name="Oldgames" xml:space="preserve">
+    <value>Old Games</value>
+  </data>
+  <data name="Games" xml:space="preserve">
+    <value>Games</value>
+  </data>
+  <data name="Playnow" xml:space="preserve">
+    <value>Play Now</value>
+  </data>
+  <data name="RedeemingPoints" xml:space="preserve">
+    <value>Redeeming Points</value>
+  </data>
+  <data name="redeem" xml:space="preserve">
+    <value>Redeem</value>
+  </data>
+  <data name="points" xml:space="preserve">
+    <value>Points</value>
+  </data>
+  <data name="winners" xml:space="preserve">
+    <value>Winners</value>
+  </data>
+  <data name="gallery" xml:space="preserve">
+    <value>Gallery</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="Shop" xml:space="preserve">
+    <value>Our Shop</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Code (You Will Use This Code In Game)</value>
+  </data>
+  <data name="GPassword" xml:space="preserve">
+    <value>Game Password</value>
+  </data>
+  <data name="GPhone" xml:space="preserve">
+    <value>Game Phone</value>
+  </data>
+  <data name="Pay" xml:space="preserve">
+    <value>Pay</value>
+  </data>
+  <data name="errorcode" xml:space="preserve">
+    <value>This Code Is Used !!</value>
+  </data>
+  <data name="errorgame" xml:space="preserve">
+    <value>Phone And Password Not In This Game !!</value>
+  </data>
+  <data name="errorgamer" xml:space="preserve">
+    <value>Phone And Password Not Valid !!</value>
+  </data>
+  <data name="errorPay" xml:space="preserve">
+    <value>Error In Payment !!</value>
+  </data>
+  <data name="GameData" xml:space="preserve">
+    <value>Game Data</value>
+  </data>
+  <data name="prizedone" xml:space="preserve">
+    <value>Thanks Your Prize Will Recive</value>
+  </data>
+  <data name="Prizeerror" xml:space="preserve">
+    <value>Phone And Password Not Valid !!</value>
+  </data>
+  <data name="prizeserrorpoints" xml:space="preserve">
+    <value>Your Point Less Than Prize Points !!</value>
+  </data>
+  <data name="redeemerror" xml:space="preserve">
+    <value>error In Redeem !!</value>
+  </data>
+  <data name="Buy" xml:space="preserve">
+    <value>Buy</value>
+  </data>
+  <data name="DealDone" xml:space="preserve">
+    <value>You Buy This Deal (Go To Game To Use It)</value>
+  </data>
+  <data name="DealError" xml:space="preserve">
+    <value>Your GGP Is Less Than Deal GGP</value>
+  </data>
+  <data name="MoneytokenError" xml:space="preserve">
+    <value>Your Money Token Limit Is Finish</value>
+  </data>
+  <data name="Pricing" xml:space="preserve">
+    <value>GGP Pricing</value>
+  </data>
+  <data name="Balance" xml:space="preserve">
+    <value>Balance</value>
+  </data>
+  <data name="Charge" xml:space="preserve">
+    <value>Charge</value>
+  </data>
+</root>

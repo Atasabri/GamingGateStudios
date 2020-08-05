@@ -1,0 +1,125 @@
+﻿@model GamingGateStudios.Models.User
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+        @if (Model.Gender == 1)
+        {
+            <dd>Male</dd>
+        }
+        else
+        {
+        <dd>Female</dd>}
+        <dt>
+            Type
+        </dt>
+        <dd>
+            @if (Model.Face_ID != null)
+            {
+                <span>FaceBook User</span>
+            }
+            else
+            {
+                <span>Normal User</span>
+            }
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberShip.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MemberShip.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Money_Token)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Money_Token)
+        </dd>
+        <dt>
+            GGB 
+        </dt>
+        <dd>
+            @Model.GGB
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+        <dt>
+            Photo
+        </dt>
+        <dd>
+            @if (Model.Face_ID != null)
+            {
+                <img src="https://graph.facebook.com/@Model.Face_ID/picture" alt="" width="500" height="300" />
+            }
+            else
+            {
+                <img src="~/Uploads/Users/@(Model.ID).jpg" alt="" width="500" height="300" />
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

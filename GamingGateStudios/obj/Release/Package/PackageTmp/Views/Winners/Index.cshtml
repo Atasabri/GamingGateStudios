@@ -1,0 +1,52 @@
+﻿@model IEnumerable<GamingGateStudios.Models.Winner>
+
+@{
+    ViewBag.Title = "Winners";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Winners</h2>
+
+<h4>@Html.ActionLink("Un Received", "UnReceived")</h4>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Received)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gamer.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prize.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Received)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gamer.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prize.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID }) |
+            @Html.ActionLink("Go to Gamer", "Details", "Gamers", new {id=item.Gamer_ID },null) | 
+            @Html.ActionLink("Go to User", "Details", "Users", new {id=item.User_ID }, null) 
+        </td>
+    </tr>
+}
+
+</table>

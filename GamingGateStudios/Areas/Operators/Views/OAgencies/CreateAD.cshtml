@@ -1,0 +1,181 @@
+﻿@using GamingGateStudios.Models
+@model GamingGateStudios.Models.AD
+
+@{
+    ViewBag.Title = "CreateAD";
+    Layout = "~/Areas/Operators/Views/Shared/_Layout.cshtml";
+}
+
+<div style="width:800px; margin:0 auto;">
+
+    <h2>Create AD</h2>
+
+    @using (Html.BeginForm("CreateAD", "OAgencies", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>AD</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Client_ID, "Client_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Client_ID", null, "--Select Client--", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Client_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Enable, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Enable)
+                        @Html.ValidationMessageFor(model => model.Enable, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Link, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Link, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Link, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                @Html.Label("Compagin Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <select id="Select1" class="form-control">
+                        <option>Select Compagin</option>
+                        <option>Compagin 1</option>
+                        <option>Compagin 2</option>
+                        <option>Compagin 3</option>
+                    </select>      
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Start Date", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input id="Text1" type="date" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("End Date", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input id="Text1" type="date" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Start Time", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input id="Text1" type="time" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("End Time", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input id="Text1" type="time" class="form-control" />
+                </div>
+            </div>
+
+            <table class="table">
+                <tr>
+                  <th>
+                      Country Name 
+                  </th>
+                    <th>
+                        Number Of Users
+                    </th>
+                </tr>
+
+                    <tr>
+                    <td>
+                        Egypt
+                    </td>
+                        <td>50</td>
+                        <td><input id="Checkbox1" type="checkbox" /></td>
+                    </tr>
+                <tr>
+                    <td>
+                        USA
+                    </td>
+                    <td>40</td>
+                    <td><input id="Checkbox1" type="checkbox" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        Germeny
+                    </td>
+                    <td>30</td>
+                    <td><input id="Checkbox1" type="checkbox" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        Qatar
+                    </td>
+                    <td>20</td>
+                    <td><input id="Checkbox1" type="checkbox" /></td>
+                </tr>
+                               
+
+            </table>
+
+            <div class="form-group">
+                @Html.Label("Photo", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input id="file" type="file" name="photo" required="Required" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+        if (ViewBag.error != null)
+        {
+            <span style="color:red">@ViewBag.error</span>
+        }
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "ADS")
+    </div>
+    </div>
+    <script>
+        var _URL = window.URL || window.webkitURL;
+
+        $("#file").change(function (e) {
+            var file, img;
+
+
+            if ((file = this.files[0])) {
+                img = new Image();
+                img.onload = function () {
+                    alert("The ADS Photo Directions Is => "+ this.width + " : " + this.height);
+                };
+                img.onerror = function () {
+                    alert("not a valid file: " + file.type);
+                };
+                img.src = _URL.createObjectURL(file);
+
+
+            }
+
+        });
+    </script>

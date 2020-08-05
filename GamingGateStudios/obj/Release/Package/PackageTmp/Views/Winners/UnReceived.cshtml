@@ -1,0 +1,46 @@
+﻿@model List<GamingGateStudios.Models.Winner>
+
+@{
+    ViewBag.Title = "UnReceived";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Count UnReceived</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Phone
+        </th>
+        <th>
+            Prize
+        </th>
+        <th>
+            User Name
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gamer.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prize.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
+            @Html.ActionLink("Go to Gamer", "Details", "Gamers", new { id = item.Gamer_ID }, null) |
+            @Html.ActionLink("Go to User", "Details", "Users", new { id = item.User_ID }, null)
+            
+        </td>
+    </tr>
+}
+
+</table>

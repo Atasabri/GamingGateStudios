@@ -1,0 +1,68 @@
+﻿@model IEnumerable<GamingGateStudios.Models.Prize>
+
+@{
+    ViewBag.Title = "Prizes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Prizes</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Points)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Third_Partner1.Name)
+        </th>
+        <th>
+            Photo
+        </th>
+        <th>
+            Num Of Winners
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @if(item.Type==1)
+            {
+                <span>Not Money</span>
+            }
+            else { <span>Money</span>}
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Points)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Third_Partner1.Name)
+        </td>
+        <td>
+            <img src="~/Uploads/Prizes/@(item.ID).jpg" alt="" width="50" height="50" />
+        </td>
+        <td>
+            @item.Winners.Count
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

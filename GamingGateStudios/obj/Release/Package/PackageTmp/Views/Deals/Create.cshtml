@@ -1,0 +1,111 @@
+﻿@using GamingGateStudios.Models
+@model GamingGateStudios.Models.Deal
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+@using (Ajax.BeginForm("Add_MemberPrice", "Deals", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "DIV", InsertionMode = InsertionMode.Replace }))
+{
+    @Html.DropDownList("Member_ID", new SelectList(new DB().MemberShips, "ID", "Name"), htmlAttributes: new { @class = "form-control" })
+    <br/>
+    <input id="Text1" type="text" name="Price" class="form-control" required="Required" placeholder="Enter GGB Count" />
+    <br/>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Add GGB Count" class="btn btn-default" />
+        </div>
+    </div>
+    <br/>
+    <div id="DIV">
+        <div>
+            <table class="table">
+                <tr>
+                    <th>
+                       Member Name
+                    </th>
+                    <th>
+                        GGB Count
+                    </th>
+                </tr>
+                @if (Session["Data"] != null)
+                {
+                    foreach (var item in Session["Data"] as List<Deal_Member>)
+                    {
+                        string MemberName = new DB().MemberShips.Find(item.Member_ID).Name;
+                        <tr>
+                            <td>
+                                @MemberName
+                            </td>
+                            <td>
+                                @item.GGB
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </div>
+}
+
+
+
+
+
+@using (Html.BeginForm("Create", "Deals", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Deal</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name_AR, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name_AR, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name_AR, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Game_ID, "Game_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Game_ID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Game_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Photo", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input id="File1" type="file" name="photo" required="Required" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+        @if(ViewBag.error!=null)
+        {
+            <span style="color:red">@ViewBag.error</span>
+        }
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.intellisense.js"></script>

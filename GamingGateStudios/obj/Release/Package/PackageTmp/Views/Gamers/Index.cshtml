@@ -1,0 +1,88 @@
+﻿@model IEnumerable<GamingGateStudios.Models.Gamer>
+
+@{
+    ViewBag.Title = "Gamers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Gamers</h2>
+@{
+    if (Model.Count() != 0)
+    {
+
+        string country = Model.GroupBy(x => x.Country.ToLower()).Select(x => new { country = x.Key, num = x.Count() }).OrderByDescending(x => x.num).FirstOrDefault().country;
+        int age = Model.GroupBy(x => DateTime.Now.Year-x.DateOfBirth.Year).Select(x => new { age = x.Key, num = x.Count() }).OrderByDescending(x => x.num).FirstOrDefault().age;
+        int gender = Model.GroupBy(x => x.Gender).Select(x => new { gender = x.Key, num = x.Count() }).OrderByDescending(x => x.num).FirstOrDefault().gender.Value;
+        <h4>Best Country : @country @Html.ActionLink("Show", "Countries", "Gamers")</h4>
+        <h4>Best Age : @age @Html.ActionLink("Show", "Age", "Gamers")</h4>
+        if (gender == 1)
+        {
+            <h4>Best Gender : Male @Html.ActionLink("Show", "Gender", "Gamers")</h4>
+        }
+        else
+        {
+            <h4>Best Gender : Female @Html.ActionLink("Show", "Gender", "Gamers")</h4>
+        }
+        <h4>@Html.ActionLink("Active Now","Active","Gamers")</h4>
+    }
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Member)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Points)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tries)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Game.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Member)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Points)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tries)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Game.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

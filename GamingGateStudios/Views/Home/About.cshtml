@@ -1,0 +1,113 @@
+﻿@using GamingGateStudios.Models
+@model List<GamingGateStudios.Models.Game>
+@{
+    ViewBag.Title = SiteResource.About;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@{
+    AD ad = DEL.GetAD(728, 90);
+    if (ad != null)
+    {
+        if (ad.Link != null)
+        {
+            <div style="margin-left:20%;margin-right:20%">
+                <a href="~/Home/ADClick/@ad.ID" target="_blank"><img src="~/Uploads/ADS/@(ad.ID).jpg" /></a>
+            </div>
+        }
+        else
+        {
+            <div style="margin-left:20%;margin-right:20%">
+                <img src="~/Uploads/ADS/@(ad.ID).jpg" />
+            </div>
+        }
+    }
+}
+<!-- Games Page Starts here -->
+<div class="games">
+    <div class="container">
+        <div class="page-path">
+            <ul class="path-list">
+                <li><a href="index.html"></a></li>
+                <li class="act"></li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="blog-content">
+            <h3 class="page-header"></h3>
+            <div class="about-top">
+                <img src="~/images/abt.jpg" alt="">
+                <div class="about-details">
+                    <h4>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, </h4>
+                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <h3 class="page-header">What we do</h3>
+            <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again</p>
+            <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again</p>
+            <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again</p>
+        </div>
+        <div class="blog-sidebar">
+            <h3 class="page-header">@SiteResource.NewGames</h3>
+            @foreach (var item in Model)
+            {
+                <div class="fetures">
+                    <img src="~/Uploads/Games/@(item.ID).jpg" alt="">
+                    <div class="caption">
+                        <a href="~/Home/Game/@item.ID">@SiteResource.Playnow</a>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- What New Part Endss Here -->
+<!-- Gallery Starts Here -->
+<div class="gallery">
+    <div class="container">
+        <h3>@SiteResource.gallery</h3>
+        <div class="gallery-top">
+            <ul id="filters" class="clearfix">
+                <li><span class="filter active" data-filter="app card icon web logo">1</span></li>
+                <li><span class="filter" data-filter="app">2</span></li>
+                <li><span class="filter" data-filter="card">3</span></li>
+                <li><span class="filter" data-filter="icon">4</span></li>
+            </ul>
+            <div id="portfoliolist">
+                @{ 
+                    int counter = 0;
+                    string state = "";
+                }
+                @foreach (var item in new DB().Portfolios)
+                {
+                    if(counter==1)
+                    {
+                        state = "app";
+                    }else if(counter==2)
+                    {
+                        state = "card";
+                    }else
+                    {
+                        state = "icon";
+                    }
+                    if(counter==4)
+                    {
+                        counter = 0;
+                    }
+                    counter++;
+
+                    <div class="portfolio @state mix_all" data-cat="@state" style="">
+                        <div class="portfolio-wrapper">
+                            <a class="b-link-stripe b-animate-go  thickbox">
+                                <img src="~/Uploads/Portfolio/@(item.ID).jpg" /><div class="b-wrapper">
+                                    <h2 class="b-animate b-from-left    b-delay03 "> </h2>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
